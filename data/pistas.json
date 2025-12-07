@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "titulo": "Pista de ejemplo",
+    "descripcion": "Esta es la primera pista de prueba.",
+    "nodo": "A",
+    "tipo": "texto"
+  },
+  {
+    "id": 2,
+    "titulo": "Otra pista",
+    "descripcion": "Segunda pista de prueba.",
+    "nodo": "B",
+    "tipo": "imagen"
+  }
+]
