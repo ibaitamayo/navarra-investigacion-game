@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Puzzle 3 – Sesgo de supervivencia</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+<main>
+    <h1>Puzzle 3 — “El problema de mirar solo los que vuelven”</h1>
+
+    <section class="console-box">
+Analizando notas del residente...
+Archivo detectado: "wald_analysis.png"
+Comentario del residente:
+"Creo que estoy mirando solo los que vuelven."
+    </section>
+
+    <section>
+        <h2>Observa la siguiente imagen</h2>
+        <p>Esta imagen muestra los impactos de bala detectados en aviones que regresaron a la base durante la Segunda Guerra Mundial.</p>
+
+        <img src="media/img/avion_wald.png"
+             alt="Avión con impactos de bala (Abraham Wald)"
+             style="width:100%; max-width:600px; border:1px solid #ccc;">
+    </section>
+
+    <section>
+        <h2>Pregunta</h2>
+        <p>¿Qué zonas del avión reforzarías basándote en los impactos observados?</p>
+
+        <div>
+            <label><input type="radio" name="refuerzo" value="mas"> Refuerzo en las zonas con más impactos</label><br>
+            <label><input type="radio" name="refuerzo" value="menos"> Refuerzo en las zonas con menos impactos</label><br>
+            <label><input type="radio" name="refuerzo" value="ambas"> Ambas</label><br>
+            <label><input type="radio" name="refuerzo" value="ninguna"> No reforzar</label>
+        </div>
+
+        <button id="checkWald" style="margin-top:1rem;">Enviar</button>
+    </section>
+
+    <div id="feedback" style="margin-top:1.5rem;"></div>
+    <div id="codigo"></div>
+    <div id="continuar"></div>
+
+    <script src="js/puzzle03.js"></script>
+</main>
+</body>
+</html>
