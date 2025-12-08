@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Puzzle 1 – Pregunta inicial</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+<main>
+    <h1>Puzzle 1 – Pregunta inicial</h1>
+
+    <section>
+        <p>
+            Un familiar te comenta que últimamente no se encuentra bien. No tiene síntomas
+            específicos, solo una sensación general de malestar.
+        </p>
+
+        <p>
+            Para tranquilizarle, le solicitas una batería de pruebas rutinarias. A los dos días
+            recibes los resultados: <strong>ha salido POSITIVO</strong> en la prueba para una enfermedad muy grave,
+            extremadamente rara y sin tratamiento.
+        </p>
+
+        <p>
+            La enfermedad afecta solo al <strong>0,1 %</strong> de la población. La prueba clasifica correctamente al
+            <strong>99 %</strong> de los sanos y al <strong>99 %</strong> de los enfermos.
+        </p>
+
+        <p>
+            Tu familiar te escribe por WhatsApp:
+        </p>
+
+        <blockquote>
+            “¿Cómo de seguro estás de que tengo esta enfermedad?”
+        </blockquote>
+
+        <p>
+            Escribe tu estimación como un número entre 0 y 100:
+        </p>
+
+        <form id="respuesta-form">
+            <input type="number" id="respuesta" min="0" max="100" placeholder="Ej: 9">
+            <button type="submit">Enviar</button>
+        </form>
+
+        <div id="feedback"></div>
+        <div id="codigo"></div>
+
+        <div id="continuar"></div>
+    </section>
+
+    <script src="js/puzzle01.js"></script>
+</main>
+</body>
+</html>
