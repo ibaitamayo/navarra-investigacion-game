@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Pista JA_B09 – Unidad de Datos y BARDENA</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+</head>
+<body>
+<main>
+    <h1>Pista JA_B09 — Qué pasó con la extracción de BARDENA</h1>
+
+    <section>
+        <p>
+            La <strong>Unidad de Datos</strong> confirma que ni los residentes ni los investigadores
+            tienen acceso directo a <strong>BARDENA</strong>.
+        </p>
+
+        <p>
+            Todo se hace a través de solicitudes formales, que solo se tramitan 
+            cuando el proyecto dispone del visto bueno del <strong>CEIm</strong>.
+        </p>
+    </section>
+
+    <section>
+        <h2>Discrepancia entre la solicitud y la extracción</h2>
+
+        <p>
+            Al revisar la documentación, aparece la solicitud original del residente:
+        </p>
+
+        <div class="console-box">
+Solicitud a Unidad de Datos
+---------------------------------
+Base de datos: BARDENA (AP Navarra)
+Población: pacientes en Atención Primaria con nuevo diagnóstico del problema de interés
+Periodo: últimos 12 meses
+Criterios de exclusión: diagnóstico previo del problema en AP
+Variables clave: fecha de primer contacto, fecha de diagnóstico, variables de seguimiento
+Nivel de agregación: seudonimizado, sin posibilidad razonable de reidentificación
+        </div>
+
+        <p style="margin-top:1rem;">
+            Sin embargo, el primer extracto que recibe el residente:
+        </p>
+
+        <ul>
+            <li>Incluye pacientes con contactos muy anteriores al periodo solicitado.</li>
+            <li>Mezcla casos prevalentes y casos incidentes.</li>
+            <li>No asegura una medición clara del resultado principal que se quería estudiar.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Una pista inquietante en las trazas</h2>
+
+        <p>
+            Los registros internos de la Unidad de Datos muestran que la extracción se lanzó
+            con unos parámetros ligeramente distintos a los de la solicitud original.
+        </p>
+
+        <div class="console-box">
+Registro interno de extracción
+---------------------------------
+Origen de la petición: proyecto del residente (código interno)
+Fecha de lanzamiento: 06:14
+Parámetros aplicados:
+  - Periodo: últimos 5 años
+  - Inclusión: todos los pacientes con cualquier registro del problema
+  - Variables: conjunto mínimo estándar AP
+Comentario interno: "Versión preliminar para revisión"
+        </div>
+
+        <p>
+            Nadie en la Unidad de Datos recuerda haber preparado expresamente esa
+            <em>"versión preliminar"</em> a esa hora.
+        </p>
+    </section>
+
+    <section>
+        <h2>Cliffhanger</h2>
+
+        <p>
+            El residente, al ver la discrepancia, duda de la validez del estudio si sigue adelante 
+            con esos datos. Antes de la reunión en la que debía presentar sus avances, 
+            estaba revisando de nuevo la especificación enviada.
+        </p>
+
+        <p>
+            ¿Quién modificó los parámetros de extracción?  
+            ¿Y con qué intención?
+        </p>
+
+        <p>
+            Es hora de revisar la siguiente pieza de información de la investigación.
+        </p>
+
+        <a href="../../puzzle06.html"
+           style="display:inline-block; margin-top:1rem; font-size:1.2rem;">
+            Continuar →
+        </a>
+    </section>
+
+</main>
+</body>
+</html>
