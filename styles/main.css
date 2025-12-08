@@ -108,3 +108,44 @@ button {
     margin-top: 1rem;
     margin-bottom: 2rem;
 }
+
+/* ===== Estilos consola para NS01 ===== */
+
+.console-box {
+    background-color: #000;
+    color: #00ff00;
+    padding: 1.2rem;
+    border-radius: 8px;
+    font-family: "Courier New", monospace;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    white-space: pre-wrap;
+    margin-bottom: 2rem;
+}
+
+.console-highlight-red {
+    color: #ff5555;
+    font-weight: bold;
+}
+
+.console-highlight-blue {
+    color: #5daeff;
+    font-weight: bold;
+}
+
+.console-highlight-yellow {
+    color: #ffee55;
+    font-weight: bold;
+}
+
+/* ===== Imagen nota del residente ===== */
+
+.nota-residente {
+    width: 100%;
+    max-width: 480px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 8px rgba(0,0,0,0.15);
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
