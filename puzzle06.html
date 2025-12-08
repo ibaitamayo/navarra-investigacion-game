@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Puzzle 6 — Reconstruir la historia del residente</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+<main>
+    <h1>Puzzle 6 — ¿Qué pasó realmente con el residente?</h1>
+
+    <section>
+        <p>
+            Habéis recorrido las fases esenciales del proceso de investigación:
+        </p>
+
+        <ul>
+            <li>Definición del marco y de la ruta de investigación (Nuria y Sara).</li>
+            <li>Formulación de la pregunta PICO y búsqueda bibliográfica (Ibai).</li>
+            <li>Ajuste metodológico y sesgos, incluido el sesgo de supervivencia (Julián).</li>
+            <li>Aspectos éticos y envío al CEIm (Javier).</li>
+            <li>Solicitud y extracción de datos a través de la Unidad de Datos y BARDENA (José).</li>
+        </ul>
+
+        <p>
+            A lo largo del camino habéis encontrado:
+        </p>
+
+        <ul>
+            <li>Una nota manuscrita en la mesa del residente.</li>
+            <li>Un correo con el aviso misterioso: “No deberías estar mirando estos datos”.</li>
+            <li>Metadatos extraños en el envío ético.</li>
+            <li>Una extracción de datos con parámetros modificados respecto a la solicitud original.</li>
+        </ul>
+
+        <p>
+            Ahora toca integrar todas las piezas.
+        </p>
+    </section>
+
+    <section>
+        <h2>Selecciona las conclusiones apoyadas por las pistas</h2>
+
+        <p>
+            Marca las afirmaciones que estén claramente respaldadas por la información obtenida
+            en las pistas y puzzles. No se trata de adivinar, sino de ceñirse a las evidencias
+            que habéis visto durante el juego.
+        </p>
+
+        <form id="reconstruccionForm">
+            <label>
+                <input type="checkbox" value="nota_reunion">
+                El residente estaba trabajando intensamente para <strong>presentar algo importante en la reunión</strong>,
+                según escribió en su nota manuscrita.
+            </label><br>
+
+            <label>
+                <input type="checkbox" value="aviso_datos">
+                Alguien le dejó un mensaje explícito de advertencia: 
+                <em>“No deberías estar mirando estos datos”</em>.
+            </label><br>
+
+            <label>
+                <input type="checkbox" value="envio_etico_correcto">
+                El residente había preparado un envío ético formalmente correcto para el CEIm.
+            </label><br>
+
+            <label>
+                <input type="checkbox" value="parametros_modificados">
+                La extracción de datos se lanzó con <strong>parámetros distintos</strong> a los de la solicitud original,
+                en una franja horaria en la que el residente no estaba conectado.
+            </label><br>
+
+            <label>
+                <input type="checkbox" value="residente_hacker">
+                El residente accedió personalmente a BARDENA con credenciales no autorizadas para
+                manipular la base de datos.
+            </label><br>
+
+            <label>
+                <input type="checkbox" value="desaparicion_castigo">
+                La desaparición del residente se debe con seguridad a una sanción formal ya impuesta por el CEIm.
+            </label><br>
+
+            <label>
+                <input type="checkbox" value="dudas_validez">
+                Antes de desaparecer, el residente tenía dudas razonables sobre la <strong>validez</strong>
+                del estudio si continuaba con la extracción de datos que había recibido.
+            </label><br>
+        </form>
+
+        <button id="checkReconstruccion" style="margin-top:1rem;">Validar reconstrucción</button>
+
+        <div id="feedback" style="margin-top:1.5rem;"></div>
+        <div id="codigo"></div>
+        <div id="continuar"></div>
+    </section>
+
+    <section>
+        <h2>Nota</h2>
+        <p>
+            Este último paso no pretende cerrar el caso de forma definitiva, sino identificar
+            qué sabemos con claridad y qué sigue siendo una hipótesis. La discusión posterior
+            en la mesa redonda retomará estas incertidumbres.
+        </p>
+    </section>
+
+    <script src="js/puzzle06.js"></script>
+</main>
+</body>
+</html>
