@@ -329,79 +329,56 @@
 
 // === SISTEMA GLOBAL DE EFECTOS DE SONIDO ===
 
-(function(){
-    const sfxBase = 'media/sfx/';
-    const sfx = {
-        type1: sfxBase + 'sfx_type1_no_respuesta.mp3',
-        type2: sfxBase + 'sfx_type2_desbloqueo_pregunta.mp3',
-        type3: sfxBase + 'sfx_type3_desbloqueo_puzzle.mp3',
-        type4: sfxBase + 'sfx_type4_respuesta_parcial.mp3'
-    };
-
-    window.playSFX = function(type){
-        const audio = new Audio(sfx[type]);
-        audio.volume = 0.9;
-        audio.play().catch(()=>{});
-    };
-})();
-
-// Activar SFX desde questions.json si existe
-(function(){
-    const oldShowAvatarAnswer = showAvatarAnswer;
-
-    window.showAvatarAnswer = function(question, options){
-        if (question.sfx){
-            playSFX(question.sfx);
+(function () {
+    // Detectar la ruta base según dónde estemos (raíz o /avatares/)
+    let base = 'media/sfx/';
+    try {
+        const path = window.location.pathname || '';
+        if (path.indexOf('/avatares/') !== -1) {
+            base = '../media/sfx/';
         }
-        oldShowAvatarAnswer(question, options);
-    };
-})();
+    } catch (e) {
+        // Fallback silencioso
+    }
 
-/******************************************************
- * SISTEMA GLOBAL DE EFECTOS DE SONIDO (SFX)
- ******************************************************/
-
-(function(){
-    const base = '/navarra-investigacion-game/media/sfx/';
     const SFX = {
-        type1: base + 'sfx_type1_no_respuesta.mp3',          // No tengo respuesta / error leve
-        type2: base + 'sfx_type2_desbloqueo_pregunta.mp3',   // Nueva pregunta desbloqueada
-        type3: base + 'sfx_type3_desbloqueo_puzzle.mp3',     // Nuevo puzzle desbloqueado
-        type4: base + 'sfx_type4_respuesta_parcial.mp3'      // Información útil sin progreso
+        type1: base + 'sfx_type1_no_respuesta.mp3',
+        type2: base + 'sfx_type2_desbloqueo_pregunta.mp3',
+        type3: base + 'sfx_type3_desbloqueo_puzzle.mp3',
+        type4: base + 'sfx_type4_respuesta_parcial.mp3'
     };
 
-    /**
-     * Reproduce un sonido sin bloquear UI ni lanzar errores.
-     * Compatible con móvil (si la acción viene tras un click).
-     */
-    window.playSFX = function(type){
+    window.playSFX = function (type) {
         if (!SFX[type]) return;
         try {
             const audio = new Audio(SFX[type]);
             audio.volume = 0.8;
-            audio.play().catch(()=>{});
-        } catch(e){
-            console.warn("SFX error:", e);
+            audio.play().catch(function () {});
+        } catch (e) {
+            console.warn('SFX error:', e);
         }
     };
 })();
 
-/******************************************************
- * INTEGRACIÓN DE SFX EN EL SISTEMA DE AVATARES
- ******************************************************/
+// --- INTEGRACIÓN DE SFX EN EL SISTEMA DE AVATARES ---
 
-(function(){
-    // Guardamos la función original
+(function () {
+    if (typeof window.showAvatarAnswer !== 'function') {
+        return;
+    }
+
     const originalShowAvatarAnswer = window.showAvatarAnswer;
 
-    // Reemplazamos por una versión extendida
-    window.showAvatarAnswer = function(question, options){
-        // Si la pregunta tiene sonido asignado en questions.json:
-        if (question && question.sfx){
-            playSFX(question.sfx);
+    window.showAvatarAnswer = function (question, options) {
+        if (question && question.sfx) {
+            try {
+                window.playSFX(question.sfx);
+            } catch (e) {
+                console.warn('No se pudo reproducir SFX:', e);
+            }
         }
 
-        // Llamamos al comportamiento estándar
         originalShowAvatarAnswer(question, options);
     };
 })();
+
