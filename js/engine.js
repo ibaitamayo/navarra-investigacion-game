@@ -362,7 +362,7 @@
  ******************************************************/
 
 (function(){
-    const base = 'media/sfx/';
+    const base = '/navarra-investigacion-game/media/sfx/';
     const SFX = {
         type1: base + 'sfx_type1_no_respuesta.mp3',          // No tengo respuesta / error leve
         type2: base + 'sfx_type2_desbloqueo_pregunta.mp3',   // Nueva pregunta desbloqueada
