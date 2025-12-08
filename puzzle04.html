@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Puzzle 4 – Comité de Ética (CEIm)</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+<main>
+    <h1>Puzzle 4 — ¿Qué necesitaba el residente para enviar su estudio al CEIm?</h1>
+
+    <section class="console-box">
+Analizando carpeta /Etica/ del residente...
+10 documentos detectados.
+Advertencia: algunos no son válidos para una solicitud al CEIm.
+    </section>
+
+    <section>
+        <h2>Selecciona SOLO los documentos válidos para un envío ético</h2>
+
+        <form id="ceim-form">
+
+            <label><input type="checkbox" value="prot_final"> Protocolo final del estudio</label><br>
+            <label><input type="checkbox" value="hip"> Hoja de Información al Paciente (HIP)</label><br>
+            <label><input type="checkbox" value="ci"> Consentimiento Informado (CI)</label><br>
+            <label><input type="checkbox" value="dpd_eval"> Evaluación de impacto de protección de datos</label><br>
+            <label><input type="checkbox" value="registro"> Formulario de registro del proyecto</label><br>
+
+            <label><input type="checkbox" value="prelim"> Análisis preliminar basado en 12 pacientes</label><br>
+            <label><input type="checkbox" value="whatsapp"> Consentimiento verbal grabado por WhatsApp</label><br>
+            <label><input type="checkbox" value="borrador"> Borrador de protocolo v0.2 sin firmar</label><br>
+            <label><input type="checkbox" value="nota_no_consent"> Nota manuscrita: "Estoy seguro de que no hace falta consentimiento."</label><br>
+            <label><input type="checkbox" value="listado_pacientes"> Listado de pacientes exportado desde carpeta personal</label><br>
+        </form>
+
+        <button id="checkCEIM" style="margin-top:1rem;">Validar envío</button>
+
+        <div id="feedback" style="margin-top:1.5rem;"></div>
+        <div id="codigo"></div>
+        <div id="continuar"></div>
+    </section>
+
+    <script src="js/puzzle04.js"></script>
+</main>
+</body>
+</html>
