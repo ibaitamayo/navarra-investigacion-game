@@ -2,39 +2,53 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Nuria y Sara – Avatar</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nuria y Sara | Avatar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/main.css">
 </head>
-<body>
-    <main class="avatar-page">
-        <div class="avatar-wrapper">
+<body class="avatar-page">
+    <div class="avatar-layout">
+        <div class="avatar-image-column">
             <img src="../media/avatars/nuria_sara.png"
                  alt="Nuria y Sara"
                  class="avatar-image">
         </div>
 
-        <section class="avatar-interaction">
-            <div id="questionsContainer" class="avatar-questions"></div>
-            <div id="answerContainer" class="avatar-answer"></div>
-        </section>
+        <div class="avatar-dialog-column">
+            <h1 class="avatar-title">Nuria y Sara</h1>
+            <p class="avatar-intro">
+                Puedes hacer preguntas sobre el circuito estándar de investigación y los primeros pasos del estudio.
+            </p>
 
-        <!-- Overlay para la respuesta con efecto typewriter -->
-        <div id="avatarOverlay" class="avatar-overlay hidden">
-            <div class="avatar-overlay-content">
-                <p id="avatarOverlayText"></p>
-                <button id="avatarOverlayClose" type="button">Cerrar</button>
-            </div>
+            <div id="questionsContainer" class="avatar-questions"></div>
         </div>
-    </main>
+    </div>
+
+    <!-- Overlay para la respuesta con efecto typewriter -->
+    <div id="avatarAnswerOverlay" class="avatar-answer-overlay" style="display:none;">
+        <div class="avatar-answer-overlay__content">
+            <div id="answerContainer" class="avatar-answer-text"></div>
+            <button id="closeOverlayBtn" class="btn avatar-overlay-close" type="button">
+                Cerrar
+            </button>
+        </div>
+    </div>
 
     <script src="../js/engine.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', function () {
         if (window.GameEngine && typeof GameEngine.renderAvatar === 'function') {
             GameEngine.renderAvatar('nuria_sara', { nodeId: 'relacion' });
-        } else {
-            console.error('GameEngine.renderAvatar no está disponible');
+        }
+
+        // Gestión del overlay (por si el motor lo usa)
+        const overlay = document.getElementById('avatarAnswerOverlay');
+        const closeBtn = document.getElementById('closeOverlayBtn');
+
+        if (closeBtn && overlay) {
+            closeBtn.addEventListener('click', function () {
+                overlay.style.display = 'none';
+            });
         }
     });
     </script>

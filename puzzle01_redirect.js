@@ -1,15 +1,15 @@
-// Script extra para Puzzle 1 → Avatar Nuria+Sara
+// Script extra para Puzzle 1: solo desbloquea elementos, sin redirigir.
 function finalizarPuzzle1() {
-    // Desbloquear la pregunta inicial del circuito
+    // Garantizar que la pregunta de circuito general está desbloqueada
     if (window.GameEngine && typeof GameEngine.unlockQuestion === 'function') {
         GameEngine.unlockQuestion('Q_CIRCUITO_GENERAL');
     }
 
-    // Desbloquear el nodo relación por si hiciera falta
+    // Garantizar que el nodo "relacion" está accesible
     if (window.GameEngine && typeof GameEngine.unlockNode === 'function') {
         GameEngine.unlockNode('relacion');
     }
 
-    // Redirigir automáticamente al avatar Nuria+Sara
-    window.location.href = "avatares/nuria_sara.html";
+    // IMPORTANTE: no redirigimos. La navegación la hace el jugador
+    // mediante el enlace "Continuar" que ahora apunta a pistas/NS01.html.
 }

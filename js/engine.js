@@ -74,7 +74,7 @@
 
     // --- CARGA DE PREGUNTAS ---
 
-    const QUESTIONS_URL = 'data/questions.json';
+    const QUESTIONS_URL = '../data/questions.json';
     let questionsCache = null;
 
     function loadQuestions() {
