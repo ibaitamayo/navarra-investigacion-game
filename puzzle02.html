@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Puzzle 2 – Reconstruyendo la pregunta PICO</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+<main class="puzzle-container">
+    <h1>Puzzle 2 — La pregunta del residente</h1>
+
+    <p>
+        Entre los archivos del ordenador del residente encontráis varios borradores de posibles
+        preguntas de investigación. Algunas son vagas, otras mezclan varios temas.
+        Solo una versión de la pregunta PICO tiene sentido como punto de partida razonable.
+    </p>
+
+    <p>
+        Vuestra tarea es reconstruir la pregunta PICO que parece más coherente con un
+        estudio en <strong>Atención Primaria en Navarra</strong>, sobre pacientes con enfermedad crónica,
+        y el posible impacto de una intervención organizativa.
+    </p>
+
+    <section class="pico-section">
+        <h2>Reconstruye la pregunta PICO</h2>
+
+        <p>
+            Seleccionad, para cada componente, la opción que mejor encaje con una pregunta
+            clínico-organizativa viable:
+        </p>
+
+        <div class="pico-field">
+            <label for="pico-p"><strong>P — Población</strong></label>
+            <select id="pico-p">
+                <option value="">Selecciona una opción</option>
+                <option value="p1">
+                    Personas adultas con enfermedad crónica atendidas en Atención Primaria en Navarra
+                </option>
+                <option value="p2">
+                    Toda la población general de Navarra, independientemente de su contacto con el sistema sanitario
+                </option>
+                <option value="p3">
+                    Pacientes ingresados en unidades de cuidados intensivos de hospitales terciarios
+                </option>
+            </select>
+        </div>
+
+        <div class="pico-field">
+            <label for="pico-i"><strong>I — Intervención / Exposición</strong></label>
+            <select id="pico-i">
+                <option value="">Selecciona una opción</option>
+                <option value="i1">
+                    Alta continuidad asistencial con su médico o equipo de Atención Primaria
+                </option>
+                <option value="i2">
+                    Administración de un nuevo fármaco experimental en hospital
+                </option>
+                <option value="i3">
+                    Participación en cualquier tipo de programa de salud sin especificar
+                </option>
+            </select>
+        </div>
+
+        <div class="pico-field">
+            <label for="pico-c"><strong>C — Comparación</strong></label>
+            <select id="pico-c">
+                <option value="">Selecciona una opción</option>
+                <option value="c1">
+                    Baja o nula continuidad asistencial con su médico o equipo de Atención Primaria
+                </option>
+                <option value="c2">
+                    Pacientes sin diagnóstico de enfermedad crónica
+                </option>
+                <option value="c3">
+                    Personas que no acuden nunca al centro de salud
+                </option>
+            </select>
+        </div>
+
+        <div class="pico-field">
+            <label for="pico-o"><strong>O — Resultado</strong></label>
+            <select id="pico-o">
+                <option value="">Selecciona una opción</option>
+                <option value="o1">
+                    Ingresos hospitalarios evitables y utilización de urgencias
+                </option>
+                <option value="o2">
+                    Satisfacción subjetiva del médico con su propio horario
+                </option>
+                <option value="o3">
+                    Número de visitas turísticas a Navarra por año
+                </option>
+            </select>
+        </div>
+
+        <button type="button" class="primary-button" onclick="checkPICO()">
+            Comprobar respuesta
+        </button>
+
+        <p id="feedback" class="feedback"></p>
+
+        <div id="next-clue" class="hidden" style="margin-top:1.5rem;">
+            <p>
+                La formulación PICO es coherente. Todo indica que el residente estaba ya
+                en la fase de <strong>pregunta claramente definida y revisión bibliográfica inicial</strong>.
+            </p>
+            <p>
+                Se desbloquea un nuevo acceso en el sistema de archivos del residente:
+            </p>
+            <a href="pistas/nuria_sara/NS_A3.html" class="primary-button">
+                Ver pista NS_A3
+            </a>
+        </div>
+    </section>
+</main>
+
+<script>
+function checkPICO() {
+    const p = document.getElementById('pico-p').value;
+    const i = document.getElementById('pico-i').value;
+    const c = document.getElementById('pico-c').value;
+    const o = document.getElementById('pico-o').value;
+    const feedback = document.getElementById('feedback');
+    const nextClue = document.getElementById('next-clue');
+
+    // Clave correcta
+    const correctP = 'p1';
+    const correctI = 'i1';
+    const correctC = 'c1';
+    const correctO = 'o1';
+
+    if (p === correctP && i === correctI && c === correctC && o === correctO) {
+        feedback.textContent = 'Correcto. Esta es una formulación PICO razonable para el proyecto del residente.';
+        feedback.classList.remove('error');
+        feedback.classList.add('success');
+        nextClue.classList.remove('hidden');
+    } else {
+        feedback.textContent = 'Algo no encaja. Revisad si la población, la intervención, la comparación y el resultado tienen coherencia entre sí.';
+        feedback.classList.remove('success');
+        feedback.classList.add('error');
+        // No mostramos la pista hasta que la combinación sea correcta
+        nextClue.classList.add('hidden');
+    }
+}
+</script>
+</body>
+</html>
