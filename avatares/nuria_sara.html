@@ -2,31 +2,41 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Nuria y Sara — Itinerario de investigación</title>
+    <title>Nuria y Sara – Avatar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../styles/main.css">
 </head>
 <body>
-<main>
-    <section>
-        <h1>Nuria y Sara</h1>
-        <img src="../media/avatars/avatar_nuria_sara.png" class="avatar-img">
+    <main class="avatar-page">
+        <div class="avatar-wrapper">
+            <img src="../media/avatars/nuria_sara.png"
+                 alt="Nuria y Sara"
+                 class="avatar-image">
+        </div>
 
-        <p>
-            Representan la relación del residente con el equipo investigador 
-            y el marco general del proceso de investigación en Atención Primaria.
-        </p>
+        <section class="avatar-interaction">
+            <div id="questionsContainer" class="avatar-questions"></div>
+            <div id="answerContainer" class="avatar-answer"></div>
+        </section>
 
-        <h2>¿Qué quieres preguntarles?</h2>
-        <div id="questionsContainer"></div>
-        <div id="answerContainer"></div>
+        <!-- Overlay para la respuesta con efecto typewriter -->
+        <div id="avatarOverlay" class="avatar-overlay hidden">
+            <div class="avatar-overlay-content">
+                <p id="avatarOverlayText"></p>
+                <button id="avatarOverlayClose" type="button">Cerrar</button>
+            </div>
+        </div>
+    </main>
 
-        <p><a href="../mapa.html">Volver al mapa →</a></p>
-    </section>
-</main>
-
-<script src="../js/engine.js"></script>
-<script>
-GameEngine.renderAvatar('nuria_sara', { nodeId: 'relacion' });
-</script>
+    <script src="../js/engine.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        if (window.GameEngine && typeof GameEngine.renderAvatar === 'function') {
+            GameEngine.renderAvatar('nuria_sara', { nodeId: 'relacion' });
+        } else {
+            console.error('GameEngine.renderAvatar no está disponible');
+        }
+    });
+    </script>
 </body>
 </html>
