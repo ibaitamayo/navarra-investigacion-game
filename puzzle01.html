@@ -10,21 +10,21 @@
 <main>
     <h1>Puzzle 01 · El mensaje del primo Joselu</h1>
 
-    <!-- Conversación tipo mensajería (imagen con el primo Joselu) -->
+    <!-- Conversación tipo mensajería -->
     <section class="chat-section">
         <img src="media/img/conversacion_primo_joselu.png"
-             alt="Captura de conversación entre el residente y su primo Joselu preguntando por los resultados de las pruebas."
+             alt="Conversación entre el residente y su primo Joselu"
              class="chat-image">
     </section>
 
     <p>
         Un familiar te comenta que últimamente no se encuentra bien. Nada concreto, solo que dice no estar
         al 100 %. Pensando en calmarle, le pasas una batería de pruebas y, dos días después, tienes los resultados:
-        <strong>una de las pruebas ha dado positivo</strong> para una enfermedad muy grave, para la que no hay tratamiento.
+        <strong>una de las pruebas ha dado positivo para una enfermedad muy grave, para la que no hay tratamiento.</strong>
     </p>
 
     <p>
-        Es una enfermedad poco frecuente: solo la padece el <strong>0,1 % de la población</strong>.
+        Es una enfermedad poco frecuente: <strong>solo la padece el 0,1 % de la población</strong>.
         La prueba es muy buena: <strong>clasifica correctamente al 99 % de los casos</strong>.
     </p>
 
@@ -45,49 +45,33 @@
 </main>
 
 <script>
-function normalizarEntrada(valor) {
-    if (!valor) return '';
-    return valor.trim().toLowerCase().replace(',', '.');
+// Normalizar entrada del usuario
+function normalizarEntrada(v) {
+    if (!v) return '';
+    return v.trim().toLowerCase().replace(',', '.');
 }
 
 function validarRespuesta() {
-    const input = document.getElementById('respuesta');
-    const resultadoDiv = document.getElementById('resultado');
-
-    const valor = normalizarEntrada(input.value);
+    const valor = normalizarEntrada(document.getElementById("respuesta").value);
+    const resultadoDiv = document.getElementById("resultado");
     resultadoDiv.innerHTML = '';
 
-    // Respuestas aceptadas ~10 %
-    const respuestasCorrectas = [
-        '0.1',
-        '0.10',
-        '0.099',
-        '0.09',
-        '0.0990',
-        '10%',
-        '10'
-    ];
+    // Respuestas aceptadas ≈10 %
+    const aceptables = ['0.1','0.10','0.099','0.09','0.0990','10%','10'];
 
-    const esCorrecta = respuestasCorrectas.includes(valor);
-
-    if (esCorrecta) {
-        resultadoDiv.innerHTML = `
-            <p>Respuesta correcta. Más adelante comprenderás por qué esta probabilidad es tan baja a pesar del resultado positivo.</p>
-        `;
+    if (aceptables.includes(valor)) {
+        resultadoDiv.innerHTML =
+            '<p>Respuesta correcta. Más adelante comprenderás por qué esta probabilidad es tan baja a pesar del resultado positivo.</p>';
     } else {
-        resultadoDiv.innerHTML = `
-            <p>La respuesta no es correcta, pero más adelante veremos el razonamiento paso a paso y entenderás el resultado.</p>
-        `;
+        resultadoDiv.innerHTML =
+            '<p>La respuesta no es correcta, pero más adelante veremos el razonamiento paso a paso y entenderás el resultado.</p>';
     }
 
-    // Enlace al mapa SOLO tras responder
-    const mapaParrafo = document.createElement("p");
-    mapaParrafo.innerHTML = \`
-        <a href="mapa.html" class="mapa-link">
-            Continuar → Mapa de la investigación
-        </a>
-    \`;
-    resultadoDiv.appendChild(mapaParrafo);
+    // ENLACE AL MAPA: aparece SOLO después de responder
+    const enlace = document.createElement("p");
+    enlace.innerHTML =
+        '<a href="mapa.html" class="mapa-link">Continuar → Mapa de la investigación</a>';
+    resultadoDiv.appendChild(enlace);
 }
 </script>
 
