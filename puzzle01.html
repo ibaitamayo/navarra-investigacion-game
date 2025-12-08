@@ -77,3 +77,15 @@ function validarRespuesta() {
 
 </body>
 </html>
+
+<script src="puzzle01_redirect.js"></script>
+
+<script>
+// Al terminar el puzzle, siempre desbloqueamos pregunta y enviamos al avatar
+const old_validarRespuesta = validarRespuesta;
+validarRespuesta = function(){
+    old_validarRespuesta();
+    finalizarPuzzle1();
+};
+</script>
+
