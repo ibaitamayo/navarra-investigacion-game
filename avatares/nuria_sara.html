@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Nuria y Sara — Itinerario de investigación</title>
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+<main>
+    <section>
+        <h1>Nuria y Sara</h1>
+        <p>
+            Nuria y Sara representan la relación del residente con el equipo investigador
+            y el marco general del proceso de investigación en Atención Primaria en Navarra.
+        </p>
+
+        <h2>¿Qué quieres preguntarles?</h2>
+        <div id="questionsContainer"></div>
+        <div id="answerContainer" style="margin-top:1.5rem;"></div>
+
+        <p style="margin-top:2rem;">
+            <a href="../mapa.html">Volver al mapa de la investigación →</a>
+        </p>
+    </section>
+</main>
+
+<script src="../js/engine.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    if (window.GameEngine && typeof window.GameEngine.renderAvatar === 'function') {
+        window.GameEngine.renderAvatar('nuria_sara', { nodeId: 'relacion' });
+    }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Javier Garjón — Comité de ética (CEIm)</title>
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+<main>
+    <section>
+        <h1>Javier Garjón</h1>
+        <p>
+            Javier representa al CEIm y la revisión ética: documentación requerida,
+            riesgos y buen uso de las herramientas (incluida la IA).
+        </p>
+
+        <h2>¿Qué quieres preguntarle?</h2>
+        <div id="questionsContainer"></div>
+        <div id="answerContainer" style="margin-top:1.5rem;"></div>
+
+        <p style="margin-top:2rem;">
+            <a href="../mapa.html">Volver al mapa de la investigación →</a>
+        </p>
+    </section>
+</main>
+
+<script src="../js/engine.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    if (window.GameEngine && typeof window.GameEngine.renderAvatar === 'function') {
+        window.GameEngine.renderAvatar('javier', { nodeId: 'etica' });
+    }
+});
+</script>
+</body>
+</html>

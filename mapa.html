@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mapa de la investigación — Juego</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <style>
+        /* Ajustes ligeros para el mapa; puedes refinarlos en main.css más adelante */
+        .nodes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .node-card {
+            border: 1px solid #ccc;
+            padding: 1rem 1.2rem;
+            border-radius: 0.75rem;
+            background: #fdfdfd;
+        }
+        .node-card--locked {
+            opacity: 0.45;
+        }
+        .node-card--visited {
+            border-color: #4caf50;
+        }
+        .node-card h2 {
+            margin-top: 0;
+            margin-bottom: 0.6rem;
+            font-size: 1.1rem;
+        }
+        .node-card p {
+            margin: 0.3rem 0;
+        }
+        .node-card__link {
+            display: inline-block;
+            margin-top: 0.8rem;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<main>
+    <section>
+        <h1>Mapa de la investigación</h1>
+        <p>
+            Este mapa representa el itinerario de la investigación sanitaria en Navarra.
+            Desde aquí puedes decidir a qué avatar consultar en cada fase.
+        </p>
+
+        <div id="nodesGrid" class="nodes-grid"></div>
+
+        <p style="margin-top:2rem;">
+            Puedes volver al caso principal en cualquier momento usando el navegador o los enlaces
+            que se añadan en los puzzles.
+        </p>
+    </section>
+</main>
+
+<script src="js/engine.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        if (window.GameEngine && typeof window.GameEngine.renderMapa === 'function') {
+            window.GameEngine.renderMapa();
+        }
+    });
+</script>
+</body>
+</html>

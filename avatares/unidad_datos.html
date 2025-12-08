@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Unidad de Datos — Solicitud de datos</title>
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+<main>
+    <section>
+        <h1>Unidad de Datos</h1>
+        <p>
+            Este avatar representa a la unidad encargada de gestionar las solicitudes de datos.
+            Solo debería recibir peticiones alineadas con lo aprobado por el CEIm.
+        </p>
+
+        <h2>¿Qué quieres preguntar?</h2>
+        <div id="questionsContainer"></div>
+        <div id="answerContainer" style="margin-top:1.5rem;"></div>
+
+        <p style="margin-top:2rem;">
+            <a href="../mapa.html">Volver al mapa de la investigación →</a>
+        </p>
+    </section>
+</main>
+
+<script src="../js/engine.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    if (window.GameEngine && typeof window.GameEngine.renderAvatar === 'function') {
+        window.GameEngine.renderAvatar('unidad_datos', { nodeId: 'datos' });
+    }
+});
+</script>
+</body>
+</html>

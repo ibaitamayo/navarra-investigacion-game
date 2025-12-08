@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ibai — Pregunta PICO y bibliografía</title>
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+<main>
+    <section>
+        <h1>Ibai Tamayo</h1>
+        <p>
+            Ibai ayuda a formular la pregunta de investigación, estructurarla en formato PICO
+            y orientar la búsqueda bibliográfica.
+        </p>
+
+        <h2>¿Qué quieres preguntarle?</h2>
+        <div id="questionsContainer"></div>
+        <div id="answerContainer" style="margin-top:1.5rem;"></div>
+
+        <p style="margin-top:2rem;">
+            <a href="../mapa.html">Volver al mapa de la investigación →</a>
+        </p>
+    </section>
+</main>
+
+<script src="../js/engine.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    if (window.GameEngine && typeof window.GameEngine.renderAvatar === 'function') {
+        window.GameEngine.renderAvatar('ibai', { nodeId: 'pico' });
+    }
+});
+</script>
+</body>
+</html>

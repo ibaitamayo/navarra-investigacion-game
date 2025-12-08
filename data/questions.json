@@ -1,0 +1,96 @@
+{
+  "nuria_sara": [
+    {
+      "id": "NS_Q1",
+      "text": "¿Cuál es el itinerario general de la investigación en Atención Primaria en Navarra?",
+      "answer": "El circuito estándar incluye: relación con el IP y equipo, formulación de la pregunta y búsqueda bibliográfica, diseño metodológico, evaluación por el CEIm, solicitud de datos a la Unidad del Dato, análisis y gestión de datos, y finalmente la publicación y difusión.",
+      "leads_to": null
+    },
+    {
+      "id": "NS_Q2",
+      "text": "¿Qué se esperaba concretamente del residente en este proyecto?",
+      "answer": "El residente debía seguir ese circuito completo, documentando cada decisión: cómo planteaba la pregunta, cómo elegía el diseño, cómo justificaba la petición al CEIm, cómo formulaba la solicitud de datos y cómo analizaba e interpretaba los resultados.",
+      "leads_to": null
+    }
+  ],
+
+  "ibai": [
+    {
+      "id": "IB_Q1",
+      "text": "¿Podemos revisar la formulación de la pregunta y el enfoque PICO a partir del caso del residente?",
+      "answer": "La pregunta debe traducir el caso del residente a un formato PICO claro. A partir de ahí, podemos valorar si el desenlace, la población y la exposición están bien definidos y si las fuentes bibliográficas que se han consultado son coherentes.",
+      "leads_to": "../puzzle02.html",
+      "unlocks_node": "diseno"
+    },
+    {
+      "id": "IB_Q2",
+      "text": "¿Qué tipo de evidencia mínima deberíamos tener identificada antes de avanzar al diseño del estudio?",
+      "answer": "Al menos una revisión o algunos estudios clave que nos indiquen si la pregunta es relevante, factible y dónde están los principales sesgos y lagunas de conocimiento.",
+      "leads_to": null
+    }
+  ],
+
+  "julian": [
+    {
+      "id": "JL_Q1",
+      "text": "¿Qué opciones de diseño serían razonables para la pregunta planteada?",
+      "answer": "En función del caso, podríamos plantear un estudio de cohortes, un caso-control anidado o un estudio transversal analítico. La elección depende de la temporality, de la frecuencia del desenlace y de la factibilidad de seguimiento.",
+      "leads_to": "../puzzle03.html",
+      "unlocks_node": "etica"
+    },
+    {
+      "id": "JL_Q2",
+      "text": "¿Dónde encaja aquí la guía EQUATOR y el sesgo de selección?",
+      "answer": "Las guías EQUATOR recuerdan que cada diseño tiene un checklist específico (STROBE, CONSORT, etc.). El sesgo de selección se vuelve crítico cuando los pacientes que entran en el estudio no representan adecuadamente a la población objetivo, algo muy relevante en Atención Primaria.",
+      "leads_to": null
+    }
+  ],
+
+  "javier": [
+    {
+      "id": "JG_Q1",
+      "text": "¿Qué documentación ética mínima es necesaria antes de acceder a los datos del residente?",
+      "answer": "Es imprescindible contar con la documentación requerida por el CEIm: información sobre el consentimiento informado o su justificación, derechos de acceso a la historia clínica y la documentación del comité de ética. Sin este paso, no debería existir extracción de datos.",
+      "leads_to": "../puzzle04.html",
+      "unlocks_node": "datos"
+    },
+    {
+      "id": "JG_Q2",
+      "text": "¿Qué riesgos existen si se usan herramientas de IA sin control ético adecuado?",
+      "answer": "El principal riesgo es la combinación de datos sensibles, decisiones automatizadas opacas y ausencia de supervisión humana, lo que puede vulnerar confidencialidad, derechos de los pacientes y la validez misma de los resultados.",
+      "leads_to": null
+    }
+  ],
+
+  "unidad_datos": [
+    {
+      "id": "UD_Q1",
+      "text": "Queremos solicitar datos para este proyecto. ¿Qué deberíamos incluir en la petición a la Unidad del Dato?",
+      "answer": "La petición debe estar alineada con lo aprobado por el CEIm: población, periodo, variables y criterios de inclusión/exclusión. Cualquier desajuste entre lo aprobado y lo solicitado genera un problema ético y metodológico.",
+      "leads_to": "../puzzle05.html",
+      "unlocks_node": "analisis"
+    },
+    {
+      "id": "UD_Q2",
+      "text": "¿Podríamos pedir un conjunto de datos más amplio por si acaso, aunque no lo usemos todo?",
+      "answer": "No sería apropiado. Debe pedirse únicamente lo necesario para responder la pregunta de investigación tal como ha sido aprobada éticamente.",
+      "leads_to": null
+    }
+  ],
+
+  "jose": [
+    {
+      "id": "JA_Q1",
+      "text": "¿Qué comprobaciones básicas debemos hacer antes de empezar a analizar los datos extraídos?",
+      "answer": "Hay que revisar coherencia de variables, rangos plausibles, patrones de datos faltantes y comprobar que el extracto se corresponde con lo solicitado y aprobado. También documentar cualquier incidencia detectada.",
+      "leads_to": "../puzzle06.html",
+      "unlocks_node": "difusion"
+    },
+    {
+      "id": "JA_Q2",
+      "text": "¿Cómo documentaríamos de forma transparente los problemas detectados en el proceso de extracción?",
+      "answer": "Un registro claro de incidencias, decisiones de limpieza y justificación de exclusiones es esencial. Esa trazabilidad será clave cuando se discuta el caso en la mesa redonda.",
+      "leads_to": null
+    }
+  ]
+}
