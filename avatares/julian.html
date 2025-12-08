@@ -7,30 +7,23 @@
 </head>
 <body>
 <main>
-    <section>
-        <h1>Julián Librero</h1>
-        <p>
-            Julián guía el diseño metodológico del estudio, la elección del tipo de diseño
-            y la reflexión sobre sesgos como el sesgo de selección.
-        </p>
+    <h1>Julián Librero</h1>
+    <img src="../media/avatars/avatar_julian.png" class="avatar-img">
 
-        <h2>¿Qué quieres preguntarle?</h2>
-        <div id="questionsContainer"></div>
-        <div id="answerContainer" style="margin-top:1.5rem;"></div>
+    <p>
+        Responsable del diseño metodológico, sesgos y guías EQUATOR.
+    </p>
 
-        <p style="margin-top:2rem;">
-            <a href="../mapa.html">Volver al mapa de la investigación →</a>
-        </p>
-    </section>
+    <h2>¿Qué quieres preguntarle?</h2>
+    <div id="questionsContainer"></div>
+    <div id="answerContainer"></div>
+
+    <p><a href="../mapa.html">Volver al mapa →</a></p>
 </main>
 
 <script src="../js/engine.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-    if (window.GameEngine && typeof window.GameEngine.renderAvatar === 'function') {
-        window.GameEngine.renderAvatar('julian', { nodeId: 'diseno' });
-    }
-});
+GameEngine.renderAvatar('julian', { nodeId: 'diseno' });
 </script>
 </body>
 </html>

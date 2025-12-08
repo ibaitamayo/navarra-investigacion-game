@@ -9,28 +9,24 @@
 <main>
     <section>
         <h1>Nuria y Sara</h1>
+        <img src="../media/avatars/avatar_nuria_sara.png" class="avatar-img">
+
         <p>
-            Nuria y Sara representan la relación del residente con el equipo investigador
-            y el marco general del proceso de investigación en Atención Primaria en Navarra.
+            Representan la relación del residente con el equipo investigador 
+            y el marco general del proceso de investigación en Atención Primaria.
         </p>
 
         <h2>¿Qué quieres preguntarles?</h2>
         <div id="questionsContainer"></div>
-        <div id="answerContainer" style="margin-top:1.5rem;"></div>
+        <div id="answerContainer"></div>
 
-        <p style="margin-top:2rem;">
-            <a href="../mapa.html">Volver al mapa de la investigación →</a>
-        </p>
+        <p><a href="../mapa.html">Volver al mapa →</a></p>
     </section>
 </main>
 
 <script src="../js/engine.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-    if (window.GameEngine && typeof window.GameEngine.renderAvatar === 'function') {
-        window.GameEngine.renderAvatar('nuria_sara', { nodeId: 'relacion' });
-    }
-});
+GameEngine.renderAvatar('nuria_sara', { nodeId: 'relacion' });
 </script>
 </body>
 </html>

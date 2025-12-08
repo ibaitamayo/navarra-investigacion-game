@@ -7,30 +7,23 @@
 </head>
 <body>
 <main>
-    <section>
-        <h1>José Arco</h1>
-        <p>
-            José acompaña la fase de análisis y gestión de los datos: comprobaciones previas,
-            trazabilidad de decisiones y documentación de incidencias.
-        </p>
+    <h1>José Arco</h1>
+    <img src="../media/avatars/avatar_jose.png" class="avatar-img">
 
-        <h2>¿Qué quieres preguntarle?</h2>
-        <div id="questionsContainer"></div>
-        <div id="answerContainer" style="margin-top:1.5rem;"></div>
+    <p>
+        Responsable del análisis, limpieza y validación de los datos del estudio.
+    </p>
 
-        <p style="margin-top:2rem;">
-            <a href="../mapa.html">Volver al mapa de la investigación →</a>
-        </p>
-    </section>
+    <h2>¿Qué quieres preguntarle?</h2>
+    <div id="questionsContainer"></div>
+    <div id="answerContainer"></div>
+
+    <p><a href="../mapa.html">Volver al mapa →</a></p>
 </main>
 
 <script src="../js/engine.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-    if (window.GameEngine && typeof window.GameEngine.renderAvatar === 'function') {
-        window.GameEngine.renderAvatar('jose', { nodeId: 'analisis' });
-    }
-});
+GameEngine.renderAvatar('jose', { nodeId: 'analisis' });
 </script>
 </body>
 </html>

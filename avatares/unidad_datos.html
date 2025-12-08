@@ -2,35 +2,28 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Unidad de Datos — Solicitud de datos</title>
+    <title>Unidad del Dato — Solicitud de datos</title>
     <link rel="stylesheet" href="../styles/main.css">
 </head>
 <body>
 <main>
-    <section>
-        <h1>Unidad de Datos</h1>
-        <p>
-            Este avatar representa a la unidad encargada de gestionar las solicitudes de datos.
-            Solo debería recibir peticiones alineadas con lo aprobado por el CEIm.
-        </p>
+    <h1>Unidad del Dato (SNS-O / BARDENA)</h1>
+    <img src="../media/avatars/avatar_unidad_datos.png" class="avatar-img">
 
-        <h2>¿Qué quieres preguntar?</h2>
-        <div id="questionsContainer"></div>
-        <div id="answerContainer" style="margin-top:1.5rem;"></div>
+    <p>
+        Gestionan las solicitudes de datos del proyecto y velan por su seguridad.
+    </p>
 
-        <p style="margin-top:2rem;">
-            <a href="../mapa.html">Volver al mapa de la investigación →</a>
-        </p>
-    </section>
+    <h2>¿Qué quieres preguntar?</h2>
+    <div id="questionsContainer"></div>
+    <div id="answerContainer"></div>
+
+    <p><a href="../mapa.html">Volver al mapa →</a></p>
 </main>
 
 <script src="../js/engine.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-    if (window.GameEngine && typeof window.GameEngine.renderAvatar === 'function') {
-        window.GameEngine.renderAvatar('unidad_datos', { nodeId: 'datos' });
-    }
-});
+GameEngine.renderAvatar('unidad_datos', { nodeId: 'datos' });
 </script>
 </body>
 </html>

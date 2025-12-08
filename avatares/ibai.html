@@ -7,30 +7,23 @@
 </head>
 <body>
 <main>
-    <section>
-        <h1>Ibai Tamayo</h1>
-        <p>
-            Ibai ayuda a formular la pregunta de investigación, estructurarla en formato PICO
-            y orientar la búsqueda bibliográfica.
-        </p>
+    <h1>Ibai Tamayo</h1>
+    <img src="../media/avatars/avatar_ibai.png" class="avatar-img">
 
-        <h2>¿Qué quieres preguntarle?</h2>
-        <div id="questionsContainer"></div>
-        <div id="answerContainer" style="margin-top:1.5rem;"></div>
+    <p>
+        Ayuda a formular la pregunta de investigación (PICO) y orientar la búsqueda bibliográfica.
+    </p>
 
-        <p style="margin-top:2rem;">
-            <a href="../mapa.html">Volver al mapa de la investigación →</a>
-        </p>
-    </section>
+    <h2>¿Qué quieres preguntarle?</h2>
+    <div id="questionsContainer"></div>
+    <div id="answerContainer"></div>
+
+    <p><a href="../mapa.html">Volver al mapa →</a></p>
 </main>
 
 <script src="../js/engine.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-    if (window.GameEngine && typeof window.GameEngine.renderAvatar === 'function') {
-        window.GameEngine.renderAvatar('ibai', { nodeId: 'pico' });
-    }
-});
+GameEngine.renderAvatar('ibai', { nodeId: 'pico' });
 </script>
 </body>
 </html>
