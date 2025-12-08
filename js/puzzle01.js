@@ -15,22 +15,25 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        // Umbral: aceptamos respuestas entre 7 y 11
+        // Feedback explicativo pero NO bloqueante
         if (valor >= 7 && valor <= 11) {
-            feedback.textContent = "Correcto: la probabilidad real es aproximadamente del 9 %.";
-
+            feedback.textContent = "Correcto: la probabilidad real es ~9 %.";
         } else {
-            feedback.textContent =
-                "Respuesta registrada. La probabilidad real era aproximadamente del 9 %. Lo importante es entender cómo influye la prevalencia.";
+            feedback.innerHTML = `
+                La probabilidad real era ~9 %.  
+                <br>Tu respuesta: <strong>${valor}</strong>  
+                <br><em>(Ej: ${valor}). Más adelante entenderás por qué esto sucede.</em>
+            `;
         }
 
-        // Código del juego (respuesta correcta → 9 → código A9)
+        // Código A9 (se muestra siempre)
         codigo.innerHTML = "<p><strong>Código desbloqueado: A9</strong></p>";
 
-        // Botón para continuar
+        // Enlace a NS01 (SIEMPRE disponible)
         continuar.innerHTML = `
-            <a href="pistas/nuria_sara/NS01.html" style="display:inline-block; margin-top:1rem; font-size:1.2rem;">
-                Continuar con la investigación →
+            <a href="pistas/nuria_sara/NS01.html"
+               style="display:inline-block; margin-top:1rem; font-size:1.2rem;">
+               Continuar con la investigación →
             </a>
         `;
     });
