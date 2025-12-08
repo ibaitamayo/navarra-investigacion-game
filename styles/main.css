@@ -160,3 +160,17 @@ button {
     margin: 1.5rem auto;
     box-shadow: 0 4px 14px rgba(0,0,0,0.18);
 }
+
+/* === ENLACE DESPUÉS DEL PUZZLE === */
+.mapa-link {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #005bbb;
+    text-decoration: none;
+}
+
+.mapa-link:hover {
+    text-decoration: underline;
+}
