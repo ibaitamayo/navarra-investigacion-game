@@ -302,6 +302,9 @@
                     btn.className = 'avatar-question-button';
 
                     btn.onclick = () => {
+                        if (typeof window.playSFX === 'function' && q.sfx) {
+                            window.playSFX(q.sfx);
+                        }
                         showAvatarAnswer(q, options);
                     };
 
@@ -359,26 +362,3 @@
         }
     };
 })();
-
-// --- INTEGRACIÓN DE SFX EN EL SISTEMA DE AVATARES ---
-
-(function () {
-    if (typeof window.showAvatarAnswer !== 'function') {
-        return;
-    }
-
-    const originalShowAvatarAnswer = window.showAvatarAnswer;
-
-    window.showAvatarAnswer = function (question, options) {
-        if (question && question.sfx) {
-            try {
-                window.playSFX(question.sfx);
-            } catch (e) {
-                console.warn('No se pudo reproducir SFX:', e);
-            }
-        }
-
-        originalShowAvatarAnswer(question, options);
-    };
-})();
-
