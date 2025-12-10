@@ -10,7 +10,6 @@
     ],
     "ibai": [
         {
-            "id": "IBAI_PREGUNTA_INICIAL",
             "text": "¿Qué quería el residente cuando vino a hablar contigo?",
             "answer": "Quería orientación para formular correctamente la pregunta de investigación y entender si su idea tenía sentido dentro del marco metodológico.",
             "sfx": "type3",
