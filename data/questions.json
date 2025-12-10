@@ -4,7 +4,7 @@
             "text": "¿Cuál es el circuito estándar de investigación?",
             "answer": "El circuito estándar incluye: relación con el IP y equipo, formulación de la pregunta y búsqueda bibliográfica, diseño metodológico, evaluación por el CEIm, solicitud de datos a la Unidad del Dato, análisis y gestión de datos, y finalmente la publicación y difusión.",
             "unlocks_node": "pico",
-            "leads_to": "../mapa.html",
+            "leads_to": "nuria_sara.html",
             "sfx": "type2"
         }
     ]
