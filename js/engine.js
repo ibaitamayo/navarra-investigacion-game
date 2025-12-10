@@ -104,122 +104,36 @@
         step();
     }
 
-    function ensureAvatarOverlay() {
-        let overlay = document.getElementById('avatarOverlay');
-        if (overlay) return overlay;
-
-        overlay = document.createElement('div');
-        overlay.id = 'avatarOverlay';
-        overlay.className = 'avatar-overlay';
-
-        const inner = document.createElement('div');
-        inner.className = 'avatar-overlay-inner';
-
-        // Imagen grande del avatar (se toma de la imagen ya presente en la página)
-        const img = document.createElement('img');
-        img.className = 'avatar-overlay-img';
-        const baseAvatar = document.querySelector('.avatar-img');
-        if (baseAvatar) {
-            img.src = baseAvatar.getAttribute('src');
-            img.alt = baseAvatar.getAttribute('alt') || 'Avatar';
-        }
-
-        const textDiv = document.createElement('div');
-        textDiv.id = 'avatarOverlayText';
-        textDiv.className = 'avatar-overlay-text';
-
-        const extraDiv = document.createElement('div');
-        extraDiv.id = 'avatarOverlayExtra';
-        extraDiv.className = 'avatar-overlay-extra';
-
-        const audio = document.createElement('audio');
-        audio.id = 'avatarOverlayAudio';
-        audio.className = 'avatar-overlay-audio';
-        audio.controls = true;
-        audio.style.display = 'none'; // placeholder (no hay audio real por ahora)
-
-        const closeBtn = document.createElement('button');
-        closeBtn.id = 'avatarOverlayClose';
-        closeBtn.className = 'avatar-overlay-close';
-        closeBtn.textContent = 'Cerrar';
-
-        closeBtn.onclick = () => {
-            overlay.classList.remove('avatar-overlay--visible');
-            try {
-                audio.pause();
-                audio.currentTime = 0;
-            } catch {}
-        };
-
-        inner.appendChild(img);
-        inner.appendChild(textDiv);
-        inner.appendChild(extraDiv);
-        inner.appendChild(audio);
-        inner.appendChild(closeBtn);
-        overlay.appendChild(inner);
-        document.body.appendChild(overlay);
-
-        return overlay;
-    }
-
     function showAvatarAnswer(question, options) {
-        const overlay = ensureAvatarOverlay();
-        const textEl = document.getElementById('avatarOverlayText');
-        const extraEl = document.getElementById('avatarOverlayExtra');
-        const audioEl = document.getElementById('avatarOverlayAudio');
+        const answerBox = document.getElementById("answerContainer");
+        if (!answerBox) return;
 
-        if (!overlay || !textEl || !extraEl) return;
+        answerBox.innerHTML = "";
 
-        overlay.classList.add('avatar-overlay--visible');
-        textEl.textContent = '';
-        extraEl.innerHTML = '';
+        const p = document.createElement("p");
+        p.className = "avatar-answer-text";
+        answerBox.appendChild(p);
 
-        // Placeholder de audio: si algún día añadimos src en questions.json
-        if (audioEl) {
-            if (question.audio_src) {
-                audioEl.src = question.audio_src;
-                audioEl.style.display = 'block';
-                audioEl.play().catch(() => {});
-            } else {
-                audioEl.style.display = 'none';
-            }
+        if (typeof window.playSFX === 'function' && question.sfx) {
+            playSFX(question.sfx);
         }
 
-        const answerText = question.answer || '';
-
-        // Tipo máquina de escribir
-        typewriter(textEl, answerText, 25, () => {
-            // Mensaje de éxito opcional
-            if (question.success_message) {
-                const p = document.createElement('p');
-                p.textContent = question.success_message;
-                extraEl.appendChild(p);
-            }
-
-            // Botón de continuación (puzzle, nueva página, etc.)
+        typewriter(p, question.answer || "", 25, () => {
             if (question.leads_to) {
-                const link = document.createElement('a');
+                const link = document.createElement("a");
                 link.href = question.leads_to;
-                link.className = 'avatar-next-button';
-                link.textContent = 'Continuar';
-                extraEl.appendChild(link);
+                link.className = "avatar-next-button";
+                link.textContent = "Borrar respuesta";
+                answerBox.appendChild(link);
             }
         });
 
-        // Desbloqueo de nodo (si aplica)
-        if (question.unlocks_node) {
-            unlockNode(question.unlocks_node);
-        }
+        if (question.unlocks_node) unlockNode(question.unlocks_node);
+        if (options && options.nodeId) markNodeVisited(options.nodeId);
 
-        // Marcar nodo visitado (si nos lo pasan)
-        if (options && options.nodeId) {
-            markNodeVisited(options.nodeId);
-        }
-
-        // Desbloqueo de otras preguntas (opcional: si se usa en questions.json)
         if (Array.isArray(question.unlocks_questions)) {
             question.unlocks_questions.forEach(unlockQuestion);
-        } else if (typeof question.unlocks_questions === 'string') {
+        } else if (typeof question.unlocks_questions === "string") {
             unlockQuestion(question.unlocks_questions);
         }
     }
