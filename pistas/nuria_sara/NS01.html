@@ -59,8 +59,8 @@ Procesando contenido...
 <script src="../../js/engine.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    if (typeof unlockQuestion === 'function') {
-        unlockQuestion('NS_P1');
+    if (window.GameEngine && typeof GameEngine.unlockQuestion === 'function') {
+        GameEngine.unlockQuestion('NS_P1');
     }
 });
 </script>
