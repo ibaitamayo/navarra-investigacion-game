@@ -139,7 +139,9 @@ function checkPICO() {
         feedback.classList.remove('error');
         feedback.classList.add('success');
         nextClue.classList.remove('hidden');
-        if (window.unlockQuestion) unlockQuestion("IB_P2");
+        if (window.GameEngine && typeof GameEngine.unlockQuestion === "function") {
+            GameEngine.unlockQuestion("IB_P2");
+        }
     } else {
         feedback.textContent = 'Algo no encaja. Revisad si la población, la intervención, la comparación y el resultado tienen coherencia entre sí.';
         feedback.classList.remove('success');
