@@ -22,48 +22,56 @@
 
     <!-- 3. RESPUESTA -->
     <div id="answerContainer" class="avatar-answer-area">
-        <p>Selecciona una pregunta.</p>
+        <p class="placeholder">Selecciona una pregunta.</p>
     </div>
 
     <!-- 4. PREGUNTAS -->
     <h2>¿Qué quieres preguntar?</h2>
     <div id="questionsContainer"></div>
 
-    <!-- IMPORTANTE: NO hay botón cerrar dentro del main -->
-
 </main>
 
-<!-- 5. EL ÚNICO BOTÓN CERRAR QUE QUEDA: el que estaba fuera -->
+<!-- 5. BOTÓN FIJO (NO ES CERRAR) -->
 <div style="margin-top:2rem; text-align:center;">
-    <a href="../mapa.html" class="btn avatar-overlay-close" style="text-decoration:none; padding:8px 18px; display:inline-block;">
+    <a href="../mapa.html"
+       class="btn avatar-overlay-close"
+       style="text-decoration:none; padding:8px 18px; display:inline-block;">
         Secuencia investigación
     </a>
 </div>
 
+<!-- MOTOR DEL JUEGO -->
 <script src="../js/engine.js"></script>
+
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-    if (window.GameEngine && typeof GameEngine.renderAvatar === 'function') {
-        GameEngine.renderAvatar('nuria_sara', { nodeId: 'relacion' });
+document.addEventListener("DOMContentLoaded", function () {
+
+    /* CARGAR AVATAR */
+    if (window.GameEngine && typeof GameEngine.renderAvatar === "function") {
+        GameEngine.renderAvatar("nuria_sara", { nodeId: "relacion" });
     }
 
-    const answerContainer = document.getElementById('answerContainer');
+    const answerContainer = document.getElementById("answerContainer");
 
-    // Reasigna el botón "Cerrar" dinámico (el que aparece con la respuesta)
-    document.addEventListener('click', function (ev) {
-        const target = ev.target;
-        if (!target) return;
+    /* GESTIÓN DEL BOTÓN CERRAR DINÁMICO */
+    document.addEventListener("click", function (ev) {
+        const btn = ev.target;
 
-        // Botones "Cerrar" creados dinámicamente en la respuesta
+        // Filtra SOLO botones “Cerrar” generados en las respuestas
         if (
-            target.tagName === 'BUTTON' &&
-            target.textContent.trim() === 'Cerrar' &&
-            target.id !== 'closeOverlayBtn'   // excluye el botón estático "Secuencia investigación"
+            btn.tagName === "BUTTON" &&
+            btn.textContent.trim() === "Cerrar" &&
+            btn.id !== "closeOverlayBtn"     // ignorar el botón estático
         ) {
             ev.preventDefault();
-            if (answerContainer) {
-                answerContainer.innerHTML = '<p>Selecciona una pregunta.</p>';
-            }
+
+            // Eliminamos solamente la respuesta, respetando el placeholder
+            const children = Array.from(answerContainer.children);
+            children.forEach(ch => {
+                if (!ch.classList.contains("placeholder")) {
+                    ch.remove();
+                }
+            });
         }
     });
 });
