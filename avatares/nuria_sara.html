@@ -5,6 +5,14 @@
     <title>Nuria y Sara | Avatar</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/main.css">
+    <style>
+        body.avatar-page button {
+            display: none;
+        }
+        body.avatar-page .avatar-question-button {
+            display: inline-block;
+        }
+    </style>
 </head>
 <body class="avatar-page">
 
@@ -30,15 +38,6 @@
     <div id="questionsContainer"></div>
 
 </main>
-
-<!-- 5. BOTÓN FIJO (NO ES CERRAR) -->
-<div style="margin-top:2rem; text-align:center;">
-    <a href="../mapa.html"
-       class="btn avatar-overlay-close"
-       style="text-decoration:none; padding:8px 18px; display:inline-block;">
-        Secuencia investigación
-    </a>
-</div>
 
 <!-- MOTOR DEL JUEGO -->
 <script src="../js/engine.js"></script>
@@ -79,6 +78,14 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 </script>
+
+<div style="margin-top:2rem; text-align:center;">
+    <a href="../mapa.html"
+       class="btn avatar-overlay-close"
+       style="text-decoration:none; padding:8px 18px; display:inline-block;">
+        Secuencia investigación
+    </a>
+</div>
 
 </body>
 </html>
