@@ -81,7 +81,7 @@
       "answer": "Habló de que quería entender el teorema de Bayes, por lo que le propuse este ejemplo visual",
       "sfx": "type2",
       "unlocks_node": "difusion",
-      "leads_to": "../mapa.html"
+      "leads_to": "../puzzle05.html"
     }
   ]
 }
