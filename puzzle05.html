@@ -2,143 +2,67 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Puzzle 5 — Extracción de datos (Unidad de Datos / BARDENA)</title>
+    <title>Puzzle 5 – Visual Bayes</title>
     <link rel="stylesheet" href="styles/main.css">
+    <style>
+        .bayes-canvas { 
+            width: 100%; 
+            max-width: 500px; 
+            margin: 1rem auto; 
+            display: block;
+        }
+        .explanation {
+            background: #ffffff;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+        }
+    </style>
 </head>
+
 <body>
-<main>
-    <h1>Puzzle 5 — ¿Qué falla en la extracción de datos?</h1>
+<main class="puzzle-container">
+    <h1>Puzzle 5 — ¿Qué significa realmente un positivo?</h1>
 
-    <section>
-        <p>
-            Tras la aprobación del <strong>CEIm</strong>, el residente envió una solicitud formal
-            a la <strong>Unidad de Datos</strong> para obtener un extracto de BARDENA, de acuerdo
-            con la pregunta PICO que habéis reconstruido.
-        </p>
+    <div id="step1">
+        <canvas id="canvas1" width="500" height="500" class="bayes-canvas"></canvas>
+        <div class="explanation">
+            <p>
+                Si solo el <strong>0.1%</strong> de la población tiene la enfermedad, solo 
+                <strong>1 de cada 1000</strong> personas la tendrá.  
+                Ese punto aparece en rojo: sería un <strong>verdadero positivo</strong>.
+            </p>
+        </div>
+        <button id="next1">Siguiente →</button>
+    </div>
 
-        <p>
-            Días después, recibe un fichero con los primeros datos. Sin embargo, algo no encaja.
-        </p>
-    </section>
+    <div id="step2" style="display:none;">
+        <canvas id="canvas2" width="500" height="500" class="bayes-canvas"></canvas>
+        <div class="explanation">
+            <p>
+                Como la prueba falla un <strong>1%</strong> de las veces, de los <strong>999 sanos</strong>
+                un porcentaje dará positivo por error.  
+                Aquí aparecen <strong>10 falsos positivos</strong> (en naranja).
+            </p>
+        </div>
+        <button id="next2">Siguiente →</button>
+    </div>
 
-    <section>
-        <h2>Extracto de la muestra (ejemplo simplificado)</h2>
+    <div id="step3" style="display:none;">
+        <canvas id="canvas3" width="500" height="500" class="bayes-canvas"></canvas>
+        <div class="explanation">
+            <p>
+                Estos son todos los positivos: <strong>11</strong> puntos (1 real + 10 falsos).  
+                Así que solo en <strong>1 de cada 11</strong> positivos el paciente estará enfermo.  
+                Eso es <strong>1/11 = 0,0909 = 9%</strong>.
+            </p>
+        </div>
 
-        <p>
-            Recordad de manera aproximada la pregunta PICO: población en Atención Primaria en Navarra,
-            nuevo inicio de un determinado problema de salud y periodo temporal reciente bien definido.
-        </p>
-
-        <table border="1" cellpadding="4" cellspacing="0" style="margin-top:1rem; border-collapse:collapse;">
-            <thead>
-                <tr>
-                    <th>ID_paciente</th>
-                    <th>Centro</th>
-                    <th>Edad</th>
-                    <th>Fecha_primera_consulta_AP</th>
-                    <th>Fecha_diagnostico</th>
-                    <th>Diagnostico_prev_en_AP</th>
-                    <th>Tipo_contacto</th>
-                    <th>Fecha_ultimo_contacto_registrado</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>00123</td>
-                    <td>C01</td>
-                    <td>67</td>
-                    <td>2018-03-10</td>
-                    <td>2018-03-10</td>
-                    <td>Sí</td>
-                    <td>Presencial</td>
-                    <td>2022-11-30</td>
-                </tr>
-                <tr>
-                    <td>00456</td>
-                    <td>C14</td>
-                    <td>45</td>
-                    <td>2019-06-02</td>
-                    <td>2020-01-15</td>
-                    <td>No</td>
-                    <td>Teleconsulta</td>
-                    <td>2023-01-10</td>
-                </tr>
-                <tr>
-                    <td>00789</td>
-                    <td>C07</td>
-                    <td>81</td>
-                    <td>2015-09-21</td>
-                    <td>2015-09-21</td>
-                    <td>Sí</td>
-                    <td>Visita domiciliaria</td>
-                    <td>2021-05-03</td>
-                </tr>
-                <tr>
-                    <td>01011</td>
-                    <td>C03</td>
-                    <td>29</td>
-                    <td>2023-02-01</td>
-                    <td>2023-02-01</td>
-                    <td>No</td>
-                    <td>Presencial</td>
-                    <td>2023-03-01</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <p style="margin-top:1rem;">
-            En la solicitud original el residente había especificado:
-        </p>
-        <ul>
-            <li>Periodo de estudio: últimos 12 meses.</li>
-            <li>Solo <strong>casos incidentes</strong> (sin diagnóstico previo del problema).</li>
-            <li>Variables suficientes para medir el resultado principal (tiempo hasta el diagnóstico / evolución).</li>
-        </ul>
-    </section>
-
-    <section>
-        <h2>Pregunta</h2>
-
-        <p>
-            Según la información anterior, ¿qué problemas claros detectas en esta extracción de datos?
-            Marca todas las afirmaciones que consideres correctas.
-        </p>
-
-        <form id="extraccionForm">
-            <label>
-                <input type="checkbox" value="periodo">
-                Incluye pacientes fuera del periodo de estudio definido (aparecen contactos muy antiguos).
-            </label><br>
-
-            <label>
-                <input type="checkbox" value="prevalentes">
-                Mezcla casos incidentes con casos prevalentes (ya diagnosticados previamente).
-            </label><br>
-
-            <label>
-                <input type="checkbox" value="variables">
-                Las variables disponibles no aseguran medir bien el resultado principal planteado.
-            </label><br>
-
-            <label>
-                <input type="checkbox" value="reidentificacion">
-                El nivel de detalle podría facilitar la reidentificación en centros muy pequeños.
-            </label><br>
-
-            <label>
-                <input type="checkbox" value="todo_correcto">
-                No hay ningún problema relevante; la extracción es correcta.
-            </label><br>
-        </form>
-
-        <button id="checkExtraccion" style="margin-top:1rem;">Revisar extracción</button>
-
-        <div id="feedback" style="margin-top:1.5rem;"></div>
-        <div id="codigo"></div>
-        <div id="continuar"></div>
-    </section>
-
-    <script src="js/puzzle05.js"></script>
+        <div id="continueDiv" style="margin-top:2rem;"></div>
+    </div>
 </main>
+
+<script src="js/puzzle05.js"></script>
 </body>
 </html>

@@ -1,54 +1,76 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('extraccionForm');
-    const button = document.getElementById('checkExtraccion');
-    const feedback = document.getElementById('feedback');
-    const codigo = document.getElementById('codigo');
-    const continuar = document.getElementById('continuar');
+document.addEventListener("DOMContentLoaded", () => {
 
-    button.addEventListener('click', () => {
-        const checked = Array.from(form.querySelectorAll('input[type="checkbox"]:checked'))
-            .map(input => input.value);
+    const total = 1000;
+    const truePos = 1;
+    const falsePos = 10;
 
-        const correctSet = ['periodo', 'prevalentes', 'variables'];
+    function drawPoints(ctx, highlightRed = [], highlightOrange = [], fadeOthers = false) {
+        ctx.clearRect(0, 0, 500, 500);
 
-        const setEquals = (a, b) =>
-            a.length === b.length && a.every(v => b.includes(v));
+        for (let i = 0; i < total; i++) {
+            const x = Math.random() * 500;
+            const y = Math.random() * 500;
 
-        feedback.classList.remove('success', 'error');
+            let color = "black";
+            let alpha = 1.0;
 
-        if (checked.includes('todo_correcto')) {
-            feedback.textContent = 'Si todo fuera correcto, el residente no habría dudado de la extracción. Revisa de nuevo.';
-            feedback.classList.add('error');
-            codigo.innerHTML = '';
-            continuar.innerHTML = '';
-            return;
+            if (highlightRed.includes(i)) color = "red";
+            if (highlightOrange.includes(i)) color = "orange";
+
+            if (fadeOthers && !highlightRed.includes(i) && !highlightOrange.includes(i)) {
+                alpha = 0.12;
+            }
+
+            ctx.fillStyle = color;
+            ctx.globalAlpha = alpha;
+            ctx.beginPath();
+            ctx.arc(x, y, 4, 0, Math.PI * 2);
+            ctx.fill();
         }
 
-        if (setEquals(checked, correctSet)) {
-            feedback.innerHTML = `
-                Correcto. La extracción presenta problemas claros en el periodo, 
-                en la inclusión de casos prevalentes y en las variables disponibles 
-                para medir el resultado principal.
-            `;
-            feedback.classList.add('success');
+        ctx.globalAlpha = 1;
+    }
 
-            codigo.innerHTML = "<p><strong>Código desbloqueado: JA90</strong></p>";
+    // STEP 1
+    const canvas1 = document.getElementById("canvas1");
+    const ctx1 = canvas1.getContext("2d");
+    drawPoints(ctx1, [0], [], false);
 
-            continuar.innerHTML = `
-                <a href="pistas/jose/JA_B09.html"
-                   style="display:inline-block; margin-top:1rem; font-size:1.2rem;">
-                    Continuar con la investigación →
-                </a>
-            `;
-        } else {
-            feedback.innerHTML = `
-                Parece que has detectado parte del problema, pero no todo.<br>
-                Vuelve a comparar la pregunta PICO con el tipo de pacientes, el periodo 
-                y las variables disponibles en el extracto.
-            `;
-            feedback.classList.add('error');
-            codigo.innerHTML = '';
-            continuar.innerHTML = '';
-        }
-    });
+    document.getElementById("next1").onclick = () => {
+        document.getElementById("step1").style.display = "none";
+        document.getElementById("step2").style.display = "block";
+    };
+
+    // STEP 2
+    const canvas2 = document.getElementById("canvas2");
+    const ctx2 = canvas2.getContext("2d");
+    drawPoints(ctx2, [0], Array.from({length:falsePos}, (_,i)=>i+1), false);
+
+    document.getElementById("next2").onclick = () => {
+        document.getElementById("step2").style.display = "none";
+        document.getElementById("step3").style.display = "block";
+    };
+
+    // STEP 3
+    const canvas3 = document.getElementById("canvas3");
+    const ctx3 = canvas3.getContext("2d");
+    drawPoints(
+        ctx3,
+        [0],
+        Array.from({length:falsePos}, (_,i)=>i+1),
+        true
+    );
+
+    // UNLOCK FINAL NODE AND BUTTON
+    const continueDiv = document.getElementById("continueDiv");
+    const btn = document.createElement("a");
+    btn.textContent = "Volver al mapa →";
+    btn.href = "mapa.html";
+    btn.className = "primary-button";
+
+    continueDiv.appendChild(btn);
+
+    if (window.GameEngine && typeof GameEngine.unlockNode === "function") {
+        GameEngine.unlockNode("difusion");
+    }
 });
