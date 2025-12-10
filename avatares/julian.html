@@ -2,28 +2,76 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Julián Librero — Diseño metodológico</title>
+    <title>Julián Librero | Avatar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/main.css">
 </head>
-<body>
+<body class="avatar-page">
+
 <main>
-    <h1>Julián Librero</h1>
-    <img src="../media/avatars/avatar_julian.png" class="avatar-img">
 
-    <p>
-        Responsable del diseño metodológico, sesgos y guías EQUATOR.
-    </p>
+    <!-- 1. TÍTULO -->
+    <h1 class="avatar-title">Julián Librero</h1>
 
+    <!-- 2. AVATAR -->
+    <div class="avatar-wrapper">
+        <img src="../media/avatars/avatar_julian.png"
+             alt="Julián Librero"
+             class="avatar-img">
+    </div>
+
+    <!-- 3. RESPUESTA (mismo esquema que Nuria/ Ibai) -->
+    <div id="answerContainer" class="avatar-answer-area">
+        <p class="placeholder">Selecciona una pregunta.</p>
+    </div>
+
+    <!-- 4. PREGUNTAS -->
     <h2>¿Qué quieres preguntarle?</h2>
     <div id="questionsContainer"></div>
-    <div id="answerContainer"></div>
 
-    <p><a href="../mapa.html">Volver al mapa →</a></p>
 </main>
 
+<!-- 5. ENLACE FIJO A LA SECUENCIA DE INVESTIGACIÓN -->
+<div style="margin-top:2rem; text-align:center;">
+    <a href="../mapa.html"
+       class="btn avatar-overlay-close"
+       style="text-decoration:none; padding:8px 18px; display:inline-block;">
+        Secuencia investigación
+    </a>
+</div>
+
+<!-- 6. MOTOR DEL JUEGO -->
 <script src="../js/engine.js"></script>
 <script>
-GameEngine.renderAvatar('julian', { nodeId: 'diseno' });
+document.addEventListener("DOMContentLoaded", function () {
+    // Nodo correcto para Julián: "diseno"
+    if (window.GameEngine && typeof GameEngine.renderAvatar === "function") {
+        GameEngine.renderAvatar("julian", { nodeId: "diseno" });
+    }
+
+    const answerContainer = document.getElementById("answerContainer");
+
+    // Mismo patrón que Nuria/ Ibai para botones "Cerrar" dinámicos
+    document.addEventListener("click", function (ev) {
+        const btn = ev.target;
+
+        if (
+            btn.tagName === "BUTTON" &&
+            btn.textContent.trim() === "Cerrar" &&
+            btn.id !== "closeOverlayBtn"
+        ) {
+            ev.preventDefault();
+
+            const children = Array.from(answerContainer.children);
+            children.forEach(function (ch) {
+                if (!ch.classList.contains("placeholder")) {
+                    ch.remove();
+                }
+            });
+        }
+    });
+});
 </script>
+
 </body>
 </html>
