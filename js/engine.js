@@ -201,7 +201,7 @@
                 const link = document.createElement('a');
                 link.href = question.leads_to;
                 link.className = 'avatar-next-button';
-                link.textContent = 'Continuar';
+                link.textContent = 'Borrar Respuesta';
                 extraEl.appendChild(link);
             }
         });
