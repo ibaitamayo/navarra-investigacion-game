@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         continuar.innerHTML = `
-            <a href="pistas/javier/JG_R21.html"
+            <a href="avatares/unidad_datos.html"
                style="display:inline-block; margin-top:1rem; font-size:1.2rem;">
                Continuar →
             </a>

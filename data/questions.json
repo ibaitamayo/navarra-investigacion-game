@@ -55,7 +55,7 @@
       "id": "CE_P1",
       "text": "¿Qué aspectos éticos son esenciales antes de iniciar el estudio?",
       "answer": "Es fundamental garantizar que el estudio respete los principios éticos del CEIm: consentimiento informado adecuado, proporcionalidad riesgo-beneficio y protección de datos.",
-      "sfx": "type4",
+      "sfx": "type3",
       "unlocks_node": "datos",
       "unlocks_questions": ["JD_P1"],
       "leads_to": "../puzzle04.html"
@@ -67,10 +67,10 @@
       "id": "JD_P1",
       "text": "¿Qué requisitos debo cumplir para solicitar datos al SNS-O?",
       "answer": "Para solicitar datos debes presentar una propuesta metodológica sólida, justificar la necesidad de cada variable y garantizar medidas de seguridad en el tratamiento de datos. Además, debes demostrar que el CEIm ha aprobado el proyecto y cumplir la normativa de protección de datos.",
-      "sfx": "type4",
+      "sfx": "type3",
       "unlocks_node": "analisis",
       "unlocks_questions": ["AN_P1"],
-      "leads_to": "../mapa.html"
+      "leads_to": "../jose.html"
     }
   ],
 
