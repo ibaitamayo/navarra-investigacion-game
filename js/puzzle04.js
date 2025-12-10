@@ -37,7 +37,13 @@ document.addEventListener("DOMContentLoaded", () => {
             Pero hay un detalle extraño en los metadatos...
         `;
 
-        if (window.unlockQuestion) window.unlockQuestion("JDP1");
+        // Desbloqueo equivalente al puzzle03.js
+        if (window.GameEngine && typeof GameEngine.unlockQuestion === "function") {
+            GameEngine.unlockQuestion("JDP1");
+        }
+        if (window.GameEngine && typeof GameEngine.unlockNode === "function") {
+            GameEngine.unlockNode("datos");
+        }
 
 
         continuar.innerHTML = `

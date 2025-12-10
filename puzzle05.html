@@ -2,67 +2,87 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Puzzle 5 – Visual Bayes</title>
+    <title>Puzzle 5 – Valor Predictivo Positivo</title>
     <link rel="stylesheet" href="styles/main.css">
     <style>
-        .bayes-canvas { 
-            width: 100%; 
-            max-width: 500px; 
-            margin: 1rem auto; 
+        .puzzle-img {
+            width: 100%;
+            max-width: 600px;
             display: block;
+            margin: 1.5rem auto;
+            border: 1px solid #ccc;
+        }
+        .btn-next {
+            margin-top: 1rem;
+            padding: 10px 20px;
+            background: #005bbb;
+            color: white;
+            font-size: 1.2rem;
+            border-radius: 6px;
+            cursor: pointer;
+            display: inline-block;
         }
         .explanation {
-            background: #ffffff;
-            padding: 1rem;
-            border-radius: 10px;
+            font-size: 1.2rem;
+            line-height: 1.5;
             margin-top: 1.5rem;
-            font-size: 1.1rem;
         }
     </style>
 </head>
-
 <body>
-<main class="puzzle-container">
-    <h1>Puzzle 5 — ¿Qué significa realmente un positivo?</h1>
+<main>
+    <h1>Puzzle 5 — ¿Qué significa realmente un test positivo?</h1>
 
-    <div id="step1">
-        <canvas id="canvas1" width="500" height="500" class="bayes-canvas"></canvas>
-        <div class="explanation">
+    <div id="puzzle-container">
+
+        <section id="step1">
+            <h2>1 de cada 1000 tiene la enfermedad</h2>
+            <p>Si la prevalencia es del 0,1%, solo 1 de cada 1000 pacientes tiene realmente la enfermedad.</p>
+            <img src="media/img/unodemil.png" class="puzzle-img" alt="1 de cada 1000">
+            <button class="btn-next" onclick="nextStep(1)">Siguiente →</button>
+        </section>
+
+        <section id="step2" style="display:none;">
+            <h2>Falsos positivos con una prueba del 99%</h2>
             <p>
-                Si solo el <strong>0.1%</strong> de la población tiene la enfermedad, solo 
-                <strong>1 de cada 1000</strong> personas la tendrá.  
-                Ese punto aparece en rojo: sería un <strong>verdadero positivo</strong>.
+                Si la prueba falla un 1% de las veces, de los 999 que no tienen la enfermedad,
+                unos 10 darán positivo por error.
             </p>
-        </div>
-        <button id="next1">Siguiente →</button>
-    </div>
+            <img src="media/img/oncedemil.png" class="puzzle-img" alt="Falsos positivos">
+            <button class="btn-next" onclick="nextStep(2)">Siguiente →</button>
+        </section>
 
-    <div id="step2" style="display:none;">
-        <canvas id="canvas2" width="500" height="500" class="bayes-canvas"></canvas>
-        <div class="explanation">
-            <p>
-                Como la prueba falla un <strong>1%</strong> de las veces, de los <strong>999 sanos</strong>
-                un porcentaje dará positivo por error.  
-                Aquí aparecen <strong>10 falsos positivos</strong> (en naranja).
+        <section id="step3" style="display:none;">
+            <h2>El resultado final</h2>
+            <p class="explanation">
+                Ahora se ven solo los 11 positivos (1 verdadero + 10 falsos).  
+                <br><br>
+                Eso significa que solo 1 de cada 11 positivos es real:  
+                <strong>1/11 = 0,0909 → 9%</strong>.
             </p>
-        </div>
-        <button id="next2">Siguiente →</button>
-    </div>
+            <img src="media/img/unodeonce.png" class="puzzle-img" alt="1 de cada 11 positivos es real">
+            <button class="btn-next" onclick="nextStep(3)">Continuar →</button>
+        </section>
 
-    <div id="step3" style="display:none;">
-        <canvas id="canvas3" width="500" height="500" class="bayes-canvas"></canvas>
-        <div class="explanation">
-            <p>
-                Estos son todos los positivos: <strong>11</strong> puntos (1 real + 10 falsos).  
-                Así que solo en <strong>1 de cada 11</strong> positivos el paciente estará enfermo.  
-                Eso es <strong>1/11 = 0,0909 = 9%</strong>.
+        <section id="step4" style="display:none;">
+            <h2>Conclusión</h2>
+            <p class="explanation">
+                Aunque la prueba sea muy buena (99% de precisión), si la enfermedad es muy poco frecuente,
+                la mayoría de positivos serán falsos.
             </p>
-        </div>
 
-        <div id="continueDiv" style="margin-top:2rem;"></div>
+            <a href="final.html" class="btn-next">Ir al desenlace →</a>
+        </section>
+
     </div>
 </main>
 
-<script src="js/puzzle05.js"></script>
+<script>
+function nextStep(n) {
+    document.getElementById("step" + n).style.display = "none";
+    document.getElementById("step" + (n + 1)).style.display = "block";
+}
+</script>
+
 </body>
 </html>
