@@ -35,7 +35,7 @@
 
     <p>
         Introduce tu estimación de la probabilidad de que realmente tenga la enfermedad
-        (puedes usar porcentaje o proporción, por ejemplo <code>0.10</code> o <code>10%</code>):
+        como un número entre 0 y 100 (por ejemplo <code>9</code> o <code>9%</code>):
     </p>
 
     <input type="text" id="respuesta" placeholder="Ej: 0.10 o 10%">
@@ -45,21 +45,41 @@
 </main>
 
 <script>
-// Normalizar entrada del usuario
-function normalizarEntrada(v) {
-    if (!v) return '';
-    return v.trim().toLowerCase().replace(',', '.');
-}
-
+// Validación del puzzle: la respuesta debe ser un porcentaje entero ~10 %
 function validarRespuesta() {
-    const valor = normalizarEntrada(document.getElementById("respuesta").value);
+    const inputEl = document.getElementById("respuesta");
     const resultadoDiv = document.getElementById("resultado");
+
+    // Limpiar resultado previo
     resultadoDiv.innerHTML = '';
 
-    // Respuestas aceptadas ≈10 %
-    const aceptables = ['0.1','0.10','0.099','0.09','0.0990','10%','10'];
+    if (!inputEl) return;
 
-    if (aceptables.includes(valor)) {
+    let raw = inputEl.value || '';
+    raw = raw.trim().toLowerCase();
+
+    if (!raw) {
+        resultadoDiv.innerHTML = '<p>Introduce un valor entre 0 y 100.</p>';
+        return;
+    }
+
+    // Admitimos formas como "9", "9%", "10", "10%".
+    // Eliminamos el símbolo de porcentaje y comas decimales.
+    let cleaned = raw.replace('%', '').replace(',', '.').trim();
+
+    const num = parseFloat(cleaned);
+
+    // Comprobación básica: número válido entre 0 y 100
+    if (isNaN(num) || num < 0 || num > 100) {
+        resultadoDiv.innerHTML = '<p>La entrada no es válida. Usa un número entre 0 y 100 (por ejemplo 9 o 9%).</p>';
+        return;
+    }
+
+    // Consideramos correcto cualquier valor razonablemente cercano al 10 %
+    // (por ejemplo entre 8 % y 12 %), de modo que 9 y 9 % cuenten como correctos.
+    const esCorrecto = (num >= 8 && num <= 12);
+
+    if (esCorrecto) {
         resultadoDiv.innerHTML =
             '<p>Respuesta correcta. Más adelante comprenderás por qué esta probabilidad es tan baja a pesar del resultado positivo.</p>';
     } else {
@@ -67,7 +87,7 @@ function validarRespuesta() {
             '<p>La respuesta no es correcta, pero más adelante veremos el razonamiento paso a paso y entenderás el resultado.</p>';
     }
 
-    // ENLACE AL MAPA: aparece SOLO después de responder
+    // ENLACE AL ESTADO DEL RESIDENTE: aparece SIEMPRE después de responder
     const enlace = document.createElement("p");
     enlace.innerHTML =
         '<a href="pistas/nuria_sara/NS01.html" class="mapa-link">Continuar → Estado del residente (MISSING…)</a>';
@@ -77,5 +97,3 @@ function validarRespuesta() {
 
 </body>
 </html>
-
-
