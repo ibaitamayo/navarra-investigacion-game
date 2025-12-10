@@ -1,24 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ibai Tamayo | Avatar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
 <body class="avatar-page">
 
 <main>
 
+    <!-- 1. TÍTULO -->
     <h1 class="avatar-title">Ibai Tamayo</h1>
 
+    <!-- 2. AVATAR -->
     <div class="avatar-wrapper">
         <img src="../media/avatars/avatar_ibai.png"
              alt="Ibai Tamayo"
              class="avatar-img">
     </div>
 
+    <!-- 3. RESPUESTA (igual esquema que Nuria/Sara) -->
     <div id="answerContainer" class="avatar-answer-area">
         <p class="placeholder">Selecciona una pregunta.</p>
     </div>
 
-    <h2>¿Qué quieres preguntar?</h2>
+    <!-- 4. PREGUNTAS -->
+    <h2>¿Qué quieres preguntarle?</h2>
     <div id="questionsContainer"></div>
 
 </main>
 
+<!-- 5. ENLACE FIJO A LA SECUENCIA DE INVESTIGACIÓN -->
 <div style="margin-top:2rem; text-align:center;">
     <a href="../mapa.html"
        class="btn avatar-overlay-close"
@@ -27,24 +40,30 @@
     </a>
 </div>
 
+<!-- 6. MOTOR DEL JUEGO -->
 <script src="../js/engine.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
+    // Nodo correcto para Ibai: "pico"
     if (window.GameEngine && typeof GameEngine.renderAvatar === "function") {
         GameEngine.renderAvatar("ibai", { nodeId: "pico" });
     }
 
     const answerContainer = document.getElementById("answerContainer");
 
+    // Mismo patrón que Nuria/Sara para botones "Cerrar" dinámicos
     document.addEventListener("click", function (ev) {
         const btn = ev.target;
+
         if (
             btn.tagName === "BUTTON" &&
-            btn.textContent.trim() === "Cerrar"
+            btn.textContent.trim() === "Cerrar" &&
+            btn.id !== "closeOverlayBtn"
         ) {
             ev.preventDefault();
+
             const children = Array.from(answerContainer.children);
-            children.forEach(ch => {
+            children.forEach(function (ch) {
                 if (!ch.classList.contains("placeholder")) {
                     ch.remove();
                 }
