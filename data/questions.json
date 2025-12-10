@@ -77,9 +77,9 @@
   "jose": [
     {
       "id": "AN_P1",
-      "text": "¿Cómo debemos preparar los datos para el análisis estadístico?",
-      "answer": "El primer paso es realizar una limpieza completa: revisar valores perdidos, codificaciones incoherentes y detectar outliers. Luego debes construir un diccionario de variables, definir claramente los criterios de inclusión y exclusión y preparar un plan de análisis reproducible.",
-      "sfx": "type4",
+      "text": "¿Qué dudas comentó el residente que le preocupaban?",
+      "answer": "Habló de que quería entender el teorema de Bayes, por lo que le propuse este ejemplo visual",
+      "sfx": "type2",
       "unlocks_node": "difusion",
       "leads_to": "../mapa.html"
     }
