@@ -87,11 +87,20 @@ function validarRespuesta() {
             '<p>La respuesta no es correcta, pero más adelante veremos el razonamiento paso a paso y entenderás el resultado.</p>';
     }
 
-    // ENLACE AL ESTADO DEL RESIDENTE: aparece SIEMPRE después de responder
-    const enlace = document.createElement("p");
-    enlace.innerHTML =
-        '<a href="pistas/nuria_sara/NS01.html" class="mapa-link">Continuar → Estado del residente (MISSING…)</a>';
-    resultadoDiv.appendChild(enlace);
+    // --- Nuevo bloque narrativo: validación pendiente ---
+    const systemBlock = document.createElement("div");
+    systemBlock.className = "system-followup";
+    systemBlock.innerHTML = `
+        <p><strong>Procesando respuesta…</strong></p>
+        <p>Comprobando validación interna del proyecto del residente…</p>
+        <p style="color:#aa0000;">
+            Validación incompleta: el residente dejó el sistema en estado “pendiente”.
+        </p>
+        <p>Último acceso registrado: <strong>05 de diciembre</strong>.</p>
+        <p>Es necesario revisar su actividad para continuar.</p>
+        <p><a href="pistas/nuria_sara/NS01.html" class="primary-button">Revisar actividad del residente →</a></p>
+    `;
+    resultadoDiv.appendChild(systemBlock);
 }
 </script>
 
