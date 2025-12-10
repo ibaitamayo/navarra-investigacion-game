@@ -174,3 +174,9 @@ button {
 .mapa-link:hover {
     text-decoration: underline;
 }
+
+/* Oculta la imagen clonada del overlay de avatar para evitar duplicados */
+#avatarOverlay img,
+.avatar-overlay-img {
+    display: none !important;
+}
