@@ -34,7 +34,7 @@
     {
       "id": "JL_P1",
       "text": "¿Qué aspectos metodológicos te preocupan del estudio?",
-      "answer": "El diseño debe minimizar sesgos, especialmente el sesgo de selección. También es importante seguir una guía de reporte de EQUATOR adecuada al tipo de estudio.",
+      "answer": "El diseño debe minimizar sesgos, especialmente el sesgo de selección. ",
       "sfx": "type4",
       "unlocks_node": "etica",
       "leads_to": "../puzzle03.html"
@@ -42,10 +42,45 @@
     {
       "id": "JL_P2",
       "text": "¿Qué herramienta utilizó para decidir cómo reportar su estudio?",
+      "answer": "Le dimos acceso a esta página para que pudiera decidir una guía de puntos importantes del estudio. Mira esta guía y RECUERDA qué guía es la correcta",
       "sfx": "type4",
       "leads_to": "../equator.html",
       "unlocks_node": "datos",
       "unlocks_questions": ["CE_P1"]
+    }
+  ],
+
+  "javier": [
+    {
+      "id": "CE_P1",
+      "text": "¿Qué aspectos éticos son esenciales antes de iniciar el estudio?",
+      "answer": "Es fundamental garantizar que el estudio respete los principios éticos del CEIm: consentimiento informado adecuado, proporcionalidad riesgo-beneficio y protección de datos.",
+      "sfx": "type4",
+      "unlocks_node": "datos",
+      "unlocks_questions": ["JD_P1"]
+    }
+  ],
+
+  "unidad_datos": [
+    {
+      "id": "JD_P1",
+      "text": "¿Qué requisitos debo cumplir para solicitar datos al SNS-O?",
+      "answer": "Para solicitar datos debes presentar una propuesta metodológica sólida, justificar la necesidad de cada variable y garantizar medidas de seguridad en el tratamiento de datos. Además, debes demostrar que el CEIm ha aprobado el proyecto y cumplir la normativa de protección de datos.",
+      "sfx": "type4",
+      "unlocks_node": "analisis",
+      "unlocks_questions": ["AN_P1"],
+      "leads_to": "../mapa.html"
+    }
+  ],
+
+  "jose": [
+    {
+      "id": "AN_P1",
+      "text": "¿Cómo debemos preparar los datos para el análisis estadístico?",
+      "answer": "El primer paso es realizar una limpieza completa: revisar valores perdidos, codificaciones incoherentes y detectar outliers. Luego debes construir un diccionario de variables, definir claramente los criterios de inclusión y exclusión y preparar un plan de análisis reproducible.",
+      "sfx": "type4",
+      "unlocks_node": "difusion",
+      "leads_to": "../mapa.html"
     }
   ]
 }

@@ -8,10 +8,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // Documentos correctos
     const validSet = new Set([
         "prot_final",
-        "hip",
-        "ci",
-        "dpd_eval",
-        "registro"
+        "justifica_ausencia",
+        "compromiso_ip",
+        "cv_ip"
     ]);
 
     btn.addEventListener("click", () => {
@@ -38,7 +37,8 @@ document.addEventListener("DOMContentLoaded", () => {
             Pero hay un detalle extraño en los metadatos...
         `;
 
-        codigo.innerHTML = "<p><strong>Código desbloqueado: JG56</strong></p>";
+        if (window.unlockQuestion) window.unlockQuestion("JDP1");
+
 
         continuar.innerHTML = `
             <a href="pistas/javier/JG_R21.html"

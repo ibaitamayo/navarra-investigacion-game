@@ -19,25 +19,23 @@ Advertencia: algunos no son válidos para una solicitud al CEIm.
         <h2>Selecciona SOLO los documentos válidos para un envío ético</h2>
 
         <form id="ceim-form">
-
-            <label><input type="checkbox" value="prot_final"> Protocolo final del estudio</label><br>
-            <label><input type="checkbox" value="hip"> Hoja de Información al Paciente (HIP)</label><br>
-            <label><input type="checkbox" value="ci"> Consentimiento Informado (CI)</label><br>
-            <label><input type="checkbox" value="dpd_eval"> Evaluación de impacto de protección de datos</label><br>
-            <label><input type="checkbox" value="registro"> Formulario de registro del proyecto</label><br>
-
-            <label><input type="checkbox" value="prelim"> Análisis preliminar basado en 12 pacientes</label><br>
-            <label><input type="checkbox" value="whatsapp"> Consentimiento verbal grabado por WhatsApp</label><br>
-            <label><input type="checkbox" value="borrador"> Borrador de protocolo v0.2 sin firmar</label><br>
-            <label><input type="checkbox" value="nota_no_consent"> Nota manuscrita: "Estoy seguro de que no hace falta consentimiento."</label><br>
-            <label><input type="checkbox" value="listado_pacientes"> Listado de pacientes exportado desde carpeta personal</label><br>
-        </form>
+    <label><input type="checkbox" value="prot_final"> Protocolo final del estudio</label><br>
+    <label><input type="checkbox" value="hip_ejemplar"> Ejemplar de la Hoja de Información al Paciente (HIP)</label><br>
+    <label><input type="checkbox" value="ci"> Consentimiento Informado (CI)</label><br>
+    <label><input type="checkbox" value="aut_gerente"> Autorización del gerente para acceder a la historia clínica</label><br>
+    <label><input type="checkbox" value="justifica_ausencia"> Documento que justifica la ausencia de HIP y CI</label><br>
+    <label><input type="checkbox" value="compromiso_ip"> Compromiso firmado del IP de aceptación de las condiciones del estudio</label><br>
+    <label><input type="checkbox" value="cv_ip"> Curriculum vitae del IP</label><br>
+</form>
 
         <button id="checkCEIM" style="margin-top:1rem;">Validar envío</button>
 
         <div id="feedback" style="margin-top:1.5rem;"></div>
         <div id="codigo"></div>
         <div id="continuar"></div>
+    <div style="margin-top:1.5rem; text-align:center;">
+        <img src="media/img/ceim2.png" alt="Documentos CEIm" style="width:100%; max-width:600px; border:1px solid #ccc;">
+    </div>
     </section>
 
     <script src="js/puzzle04.js"></script>
