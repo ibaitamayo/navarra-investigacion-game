@@ -24,7 +24,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 Correcto. Las zonas sin impactos son las realmente vulnerables.  
                 Los aviones que recibieron impactos ahí no regresaron a la base.
             `;
-            window.unlockQuestion && window.unlockQuestion("JL_P2");
+            if (window.GameEngine && typeof GameEngine.unlockQuestion === "function") {
+    GameEngine.unlockQuestion("JL_P2");
+}
+            if (window.GameEngine && typeof GameEngine.unlockNode === "function") {
+    GameEngine.unlockNode("diseno");
+}
             document.dispatchEvent(new Event("waldPuzzleSolved"));
 
             continuar.innerHTML = `
