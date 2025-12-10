@@ -24,7 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 Correcto. Las zonas sin impactos son las realmente vulnerables.  
                 Los aviones que recibieron impactos ahí no regresaron a la base.
             `;
-            codigo.innerHTML = "<p><strong>Código desbloqueado: JL82</strong></p>";
+            window.unlockQuestion && window.unlockQuestion("JL_P2");
+            document.dispatchEvent(new Event("waldPuzzleSolved"));
 
             continuar.innerHTML = `
                 <a href="pistas/julian/JL_A17.html"
