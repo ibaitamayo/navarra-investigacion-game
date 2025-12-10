@@ -20,7 +20,7 @@
              class="avatar-img">
     </div>
 
-    <!-- 3. RESPUESTA (se actualiza dinámicamente) -->
+    <!-- 3. RESPUESTA -->
     <div id="answerContainer" class="avatar-answer-area">
         <p>Selecciona una pregunta.</p>
     </div>
@@ -29,14 +29,16 @@
     <h2>¿Qué quieres preguntar?</h2>
     <div id="questionsContainer"></div>
 
-    <!-- 5. BOTÓN CERRAR (si se usa overlay en otros avatares) -->
-    <div style="margin-top:2rem;">
-        <button id="closeOverlayBtn" class="btn avatar-overlay-close" type="button">
-            Cerrar
-        </button>
-    </div>
+    <!-- IMPORTANTE: NO hay botón cerrar dentro del main -->
 
 </main>
+
+<!-- 5. EL ÚNICO BOTÓN CERRAR QUE QUEDA: el que estaba fuera -->
+<div style="margin-top:2rem; text-align:center;">
+    <button id="closeOverlayBtn" class="btn avatar-overlay-close" type="button">
+        Cerrar
+    </button>
+</div>
 
 <script src="../js/engine.js"></script>
 <script>
