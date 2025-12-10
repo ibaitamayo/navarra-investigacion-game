@@ -38,6 +38,14 @@
       "sfx": "type4",
       "unlocks_node": "etica",
       "leads_to": "../puzzle03.html"
+    },
+    {
+      "id": "JL_P2",
+      "text": "¿Qué herramienta utilizó para decidir cómo reportar su estudio?",
+      "sfx": "type4",
+      "leads_to": "../equator.html",
+      "unlocks_node": "datos",
+      "unlocks_questions": ["CE_P1"]
     }
   ]
 }
