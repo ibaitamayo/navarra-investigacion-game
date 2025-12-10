@@ -57,7 +57,8 @@
       "answer": "Es fundamental garantizar que el estudio respete los principios éticos del CEIm: consentimiento informado adecuado, proporcionalidad riesgo-beneficio y protección de datos.",
       "sfx": "type4",
       "unlocks_node": "datos",
-      "unlocks_questions": ["JD_P1"]
+      "unlocks_questions": ["JD_P1"],
+      "leads_to": "../puzzle04.html"
     }
   ],
 
