@@ -18,8 +18,8 @@
             unlockedNodes: ['relacion'],
             visitedNodes: [],
             unlockedQuestions: []   // IDs de preguntas desbloqueadas globalmente
-        };
-    }
+;
+
 
     function loadState() {
         try {
@@ -33,34 +33,34 @@
             if (!Array.isArray(parsed.unlockedQuestions)) parsed.unlockedQuestions = [];
 
             return parsed;
-        } catch {
+ catch {
             return defaultState();
-        }
-    }
+
+
 
     function saveState(state) {
         try {
             localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-        } catch {
+ catch {
             // ignorar errores de quota
-        }
-    }
+
+
 
     function unlockNode(nodeId) {
         const state = loadState();
         if (!state.unlockedNodes.includes(nodeId)) {
             state.unlockedNodes.push(nodeId);
             saveState(state);
-        }
-    }
+
+
 
     function markNodeVisited(nodeId) {
         const state = loadState();
         if (!state.visitedNodes.includes(nodeId)) {
             state.visitedNodes.push(nodeId);
             saveState(state);
-        }
-    }
+
+
 
     // Desbloqueo global de preguntas (por puzzle, etc.)
     function unlockQuestion(questionId) {
@@ -69,8 +69,8 @@
         if (!state.unlockedQuestions.includes(questionId)) {
             state.unlockedQuestions.push(questionId);
             saveState(state);
-        }
-    }
+
+
 
     // --- CARGA DE PREGUNTAS ---
 
@@ -84,9 +84,9 @@
             .then(data => {
                 questionsCache = data || {};
                 return questionsCache;
-            })
+)
             .catch(() => ({}));
-    }
+
 
     // --- EFECTO TYPEWRITER + OVERLAY SOBRE AVATAR ---
 
@@ -97,12 +97,12 @@
                 element.textContent = text.slice(0, idx);
                 idx++;
                 setTimeout(step, delayMs);
-            } else if (typeof onComplete === 'function') {
+ else if (typeof onComplete === 'function') {
                 onComplete();
-            }
-        }
+
+
         step();
-    }
+
 
     function ensureAvatarOverlay() {
         let overlay = document.getElementById('avatarOverlay');
@@ -122,7 +122,7 @@
         if (baseAvatar) {
             img.src = baseAvatar.getAttribute('src');
             img.alt = baseAvatar.getAttribute('alt') || 'Avatar';
-        }
+
 
         const textDiv = document.createElement('div');
         textDiv.id = 'avatarOverlayText';
@@ -148,8 +148,8 @@
             try {
                 audio.pause();
                 audio.currentTime = 0;
-            } catch {}
-        };
+ catch {}
+;
 
         inner.appendChild(img);
         inner.appendChild(textDiv);
@@ -160,7 +160,7 @@
         document.body.appendChild(overlay);
 
         return overlay;
-    }
+
 
     function showAvatarAnswer(question, options) {
         const overlay = ensureAvatarOverlay();
@@ -180,10 +180,10 @@
                 audioEl.src = question.audio_src;
                 audioEl.style.display = 'block';
                 audioEl.play().catch(() => {});
-            } else {
+ else {
                 audioEl.style.display = 'none';
-            }
-        }
+
+
 
         const answerText = question.answer || '';
 
@@ -194,35 +194,35 @@
                 const p = document.createElement('p');
                 p.textContent = question.success_message;
                 extraEl.appendChild(p);
-            }
+
 
             // Botón de continuación (puzzle, nueva página, etc.)
             if (question.leads_to) {
                 const link = document.createElement('a');
                 link.href = question.leads_to;
                 link.className = 'avatar-next-button';
-                link.textContent = 'Borrar respuesta';
+                link.textContent = 'Continuar';
                 extraEl.appendChild(link);
-            }
-        });
+
+);
 
         // Desbloqueo de nodo (si aplica)
         if (question.unlocks_node) {
             unlockNode(question.unlocks_node);
-        }
+
 
         // Marcar nodo visitado (si nos lo pasan)
         if (options && options.nodeId) {
             markNodeVisited(options.nodeId);
-        }
+
 
         // Desbloqueo de otras preguntas (opcional: si se usa en questions.json)
         if (Array.isArray(question.unlocks_questions)) {
             question.unlocks_questions.forEach(unlockQuestion);
-        } else if (typeof question.unlocks_questions === 'string') {
+ else if (typeof question.unlocks_questions === 'string') {
             unlockQuestion(question.unlocks_questions);
-        }
-    }
+
+
 
     // --- RENDER DEL MAPA ---
 
@@ -249,17 +249,17 @@
                     unlocked && node.avatar
                         ? `<a href="avatares/${node.avatar}.html">Hablar con el avatar →</a>`
                         : ''
-                }
+
                 ${
                     unlocked && !node.avatar
                         ? `<a href="pistas/final/FIN_M01.html">Ir al final →</a>`
                         : ''
-                }
+
             `;
 
             container.appendChild(card);
-        });
-    }
+);
+
 
     // --- RENDER DE AVATAR CON PREGUNTAS DESBLOQUEABLES ---
 
@@ -270,8 +270,8 @@
 
         // Texto inicial por defecto
         if (aC) {
-            aC.innerHTML = '';
-        }
+            aC.innerHTML = '<p>Selecciona una pregunta para hablar con el avatar.</p>';
+
 
         const state = loadState();
         const unlockedQuestions = new Set(state.unlockedQuestions || []);
@@ -285,7 +285,7 @@
             const visibleQs = allQs.filter(q => {
                 if (!q.id) return true;
                 return unlockedQuestions.has(q.id);
-            });
+);
 
             const ul = document.createElement('ul');
             ul.className = 'avatar-questions-list';
@@ -294,7 +294,7 @@
                 const li = document.createElement('li');
                 li.textContent = 'Todavía no has desbloqueado ninguna pregunta para este avatar.';
                 ul.appendChild(li);
-            } else {
+ else {
                 visibleQs.forEach(q => {
                     const li = document.createElement('li');
                     const btn = document.createElement('button');
@@ -304,23 +304,18 @@
                     btn.onclick = () => {
                         if (typeof window.playSFX === 'function' && q.sfx) {
                             window.playSFX(q.sfx);
-                        }
-                        const ac = document.getElementById('answerContainer');
-                        if (ac && (q.sfx === 'type2' || q.sfx === 'type3')) {
-                            ac.innerHTML = '<p class="unlock-msg">¡Has desbloqueado un nuevo camino!</p>';
-                        }
-                        showAvatarAnswer(q, options);
-                    };
+
+;
 
                     li.appendChild(btn);
                     ul.appendChild(li);
-                });
-            }
+);
+
 
             qC.innerHTML = '';
             qC.appendChild(ul);
-        });
-    }
+);
+
 
     // --- API PÚBLICA DEL MOTOR ---
 
@@ -331,8 +326,8 @@
         markNodeVisited,
         unlockQuestion,
         loadState
-    };
-})();
+;
+)();
 
 // === SISTEMA GLOBAL DE EFECTOS DE SONIDO ===
 
@@ -343,17 +338,17 @@
         const path = window.location.pathname || '';
         if (path.indexOf('/avatares/') !== -1) {
             base = '../media/sfx/';
-        }
-    } catch (e) {
+
+ catch (e) {
         // Fallback silencioso
-    }
+
 
     const SFX = {
         type1: base + 'sfx_type1_no_respuesta.mp3',
         type2: base + 'sfx_type2_desbloqueo_pregunta.mp3',
         type3: base + 'sfx_type3_desbloqueo_puzzle.mp3',
         type4: base + 'sfx_type4_respuesta_parcial.mp3'
-    };
+;
 
     window.playSFX = function (type) {
         if (!SFX[type]) return;
@@ -361,8 +356,53 @@
             const audio = new Audio(SFX[type]);
             audio.volume = 0.8;
             audio.play().catch(function () {});
-        } catch (e) {
+ catch (e) {
             console.warn('SFX error:', e);
-        }
-    };
-})();
+
+;
+)();
+
+/* ============================
+   RESPUESTA SOBRE BURBUJA C2
+   ============================ */
+
+function showBubbleAnswer(text) {
+    const bubble = document.getElementById("avatarBubble");
+    const tbox  = document.getElementById("avatarBubbleText");
+    if (!bubble || !tbox) return;
+
+    // Reiniciar
+    tbox.textContent = "";
+    bubble.style.display = "block";
+
+    // efecto typewriter
+    let i = 0;
+    function tw() {
+        if (i <= text.length) {
+            tbox.textContent = text.slice(0, i);
+            i++;
+            requestAnimationFrame(tw);
+
+
+    tw();
+
+    const closeBtn = document.getElementById("avatarBubbleClose");
+    if (closeBtn) {
+        closeBtn.onclick = () => {
+            bubble.style.display = "none";
+;
+
+
+
+
+
+
+// ===== Sistema mínimo para desbloquear preguntas (si se usa más adelante) =====
+function unlockQuestion(qid) {
+    const state = loadState();
+    if (!state.unlockedQuestions) state.unlockedQuestions = [];
+    if (!state.unlockedQuestions.includes(qid)) {
+        state.unlockedQuestions.push(qid);
+        saveState(state);
+
+

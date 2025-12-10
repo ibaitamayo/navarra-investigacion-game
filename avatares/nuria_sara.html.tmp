@@ -1,0 +1,15 @@
+
+        <div class="avatar-image-column">
+            <div class="avatar-wrapper">
+                <img src="../media/avatars/avatar_nuria_sara.png"
+                     alt="Nuria y Sara"
+                     class="avatar-img">
+
+                <!-- Burbuja tipo C2 -->
+                <div id="avatarBubble" class="avatar-bubble">
+                    <div id="avatarBubbleText" class="avatar-bubble-text"></div>
+                    <button id="avatarBubbleClose">Cerrar</button>
+                </div>
+            </div>
+        </div>
+

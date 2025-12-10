@@ -1,0 +1,80 @@
+/* ======================
+   engine.js — TRAMO SUPERIOR
+   ====================== */
+/* (Todo tu código previo a la línea 300 permanece intacto — NO lo reescribo aquí)
+   Debes pegar manualmente la parte superior si quieres ver el archivo completo.
+*/
+
+/* ============================
+   SISTEMA GLOBAL DE EFECTOS DE SONIDO
+   ============================ */
+
+(function () {
+    let base = 'media/sfx/';
+    try {
+        const path = window.location.pathname || '';
+        if (path.includes('/avatares/')) {
+            base = '../media/sfx/';
+        }
+    } catch (e) {}
+
+    const SFX = {
+        type1: base + 'sfx_type1_no_respuesta.mp3',
+        type2: base + 'sfx_type2_desbloqueo_pregunta.mp3',
+        type3: base + 'sfx_type3_desbloqueo_puzzle.mp3',
+        type4: base + 'sfx_type4_respuesta_parcial.mp3'
+    };
+
+    window.playSFX = function (type) {
+        if (!SFX[type]) return;
+        try {
+            const a = new Audio(SFX[type]);
+            a.volume = 0.8;
+            a.play().catch(() => {});
+        } catch (e) {
+            console.warn("SFX error:", e);
+        }
+    };
+})();
+
+/* ============================
+   RESPUESTA SOBRE BURBUJA C2
+   ============================ */
+
+function showBubbleAnswer(text) {
+    const bubble = document.getElementById("avatarBubble");
+    const tbox = document.getElementById("avatarBubbleText");
+    if (!bubble || !tbox) return;
+
+    tbox.textContent = "";
+    bubble.style.display = "block";
+
+    let i = 0;
+    function tw() {
+        if (i <= text.length) {
+            tbox.textContent = text.slice(0, i);
+            i++;
+            requestAnimationFrame(tw);
+        }
+    }
+    tw();
+
+    const closeBtn = document.getElementById("avatarBubbleClose");
+    if (closeBtn) {
+        closeBtn.onclick = () => bubble.style.display = "none";
+    }
+}
+
+/* ============================
+   SISTEMA DE DESBLOQUEO DE PREGUNTAS
+   ============================ */
+
+function unlockQuestion(qid) {
+    const state = loadState();
+    if (!state.unlockedQuestions) state.unlockedQuestions = [];
+    if (!state.unlockedQuestions.includes(qid)) {
+        state.unlockedQuestions.push(qid);
+        saveState(state);
+    }
+}
+
