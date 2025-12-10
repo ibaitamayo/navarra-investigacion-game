@@ -107,13 +107,13 @@
             <p>
                 Se desbloquea un nuevo acceso en el sistema de archivos del residente:
             </p>
-            <a href="pistas/nuria_sara/NS_A3.html" class="primary-button">
-                Ver pista NS_A3
+            <a href="avatares/ibai.html" class="primary-button">
+                Hablar con Ibai
             </a>
         </div>
     </section>
 </main>
-
+<script src="js/engine.js"></script>
 <script>
 function checkPICO() {
     const p = document.getElementById('pico-p').value;
@@ -134,6 +134,7 @@ function checkPICO() {
         feedback.classList.remove('error');
         feedback.classList.add('success');
         nextClue.classList.remove('hidden');
+        if (window.unlockQuestion) unlockQuestion("IB_P2");
     } else {
         feedback.textContent = 'Algo no encaja. Revisad si la población, la intervención, la comparación y el resultado tienen coherencia entre sí.';
         feedback.classList.remove('success');

@@ -23,7 +23,9 @@
       "id": "IB_P2",
       "text": "¿Cuál era exactamente la duda metodológica que tenía?",
       "answer": "El residente dudaba sobre si su pregunta estaba bien formulada como PICO y sobre qué variables debía considerar como resultado principal.",
-      "sfx": "type4"
+      "sfx": "type4",
+      "leads_to": "../puzzle03.html",
+      "unlocks_questions": ["IB_P3"]
     }
   ]
 }
