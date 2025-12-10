@@ -1,19 +1,29 @@
 {
-    "nuria_sara": [
-        {
-            "text": "¿Cuál es el circuito estándar de investigación?",
-            "answer": "El circuito estándar incluye: relación con el IP y equipo, formulación de la pregunta y búsqueda bibliográfica, diseño metodológico, evaluación por el CEIm, solicitud de datos a la Unidad del Dato, análisis y gestión de datos, y finalmente la publicación y difusión.",
-            "unlocks_node": "pico",
-            "leads_to": "../mapa.html",
-            "sfx": "type2"
-        }
-    ],
-    "ibai": [
-        {
-            "text": "¿Qué quería el residente cuando vino a hablar contigo?",
-            "answer": "Quería orientación para formular correctamente la pregunta de investigación y entender si su idea tenía sentido dentro del marco metodológico.",
-            "sfx": "type3",
-            "leads_to": "../puzzle02.html"
-        }
-    ]
+  "nuria_sara": [
+    {
+      "id": "NS_P1",
+      "text": "¿Cuál es el circuito estándar de investigación?",
+      "answer": "El circuito estándar incluye: relación con el IP y equipo, formulación de la pregunta y búsqueda bibliográfica, diseño metodológico, evaluación por el CEIm, solicitud de datos a la Unidad del Dato, análisis y gestión de datos, y finalmente la publicación y difusión.",
+      "unlocks_node": "pico",
+      "unlocks_questions": ["IB_P1"],
+      "leads_to": "../mapa.html",
+      "sfx": "type2"
+    }
+  ],
+
+  "ibai": [
+    {
+      "id": "IB_P1",
+      "text": "¿Qué quería el residente cuando vino a hablar contigo?",
+      "answer": "Quería orientación para formular correctamente la pregunta de investigación y entender si su idea tenía sentido dentro del marco metodológico.",
+      "sfx": "type3",
+      "leads_to": "../puzzle02.html"
+    },
+    {
+      "id": "IB_P2",
+      "text": "¿Cuál era exactamente la duda metodológica que tenía?",
+      "answer": "El residente dudaba sobre si su pregunta estaba bien formulada como PICO y sobre qué variables debía considerar como resultado principal.",
+      "sfx": "type4"
+    }
+  ]
 }
