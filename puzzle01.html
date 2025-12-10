@@ -79,13 +79,8 @@ function validarRespuesta() {
     // (por ejemplo entre 8 % y 12 %), de modo que 9 y 9 % cuenten como correctos.
     const esCorrecto = (num >= 8 && num <= 12);
 
-    if (esCorrecto) {
-        resultadoDiv.innerHTML =
-            '<p>Respuesta correcta. Más adelante comprenderás por qué esta probabilidad es tan baja a pesar del resultado positivo.</p>';
-    } else {
-        resultadoDiv.innerHTML =
-            '<p>La respuesta no es correcta, pero más adelante veremos el razonamiento paso a paso y entenderás el resultado.</p>';
-    }
+    // No mostramos si es correcto o incorrecto
+    resultadoDiv.innerHTML = '';
 
     // --- Nuevo bloque narrativo: validación pendiente ---
     const systemBlock = document.createElement("div");
