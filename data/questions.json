@@ -70,7 +70,7 @@
       "sfx": "type3",
       "unlocks_node": "analisis",
       "unlocks_questions": ["AN_P1"],
-      "leads_to": "../jose.html"
+      "leads_to": "../avatares/jose.html"
     }
   ],
 
