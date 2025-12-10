@@ -51,27 +51,30 @@ document.addEventListener("DOMContentLoaded", function () {
         GameEngine.renderAvatar("nuria_sara", { nodeId: "relacion" });
     }
 
-    const answerContainer = document.getElementById("answerContainer");
+    const overlay = document.getElementById("avatarAnswerOverlay");
+    const overlayText = document.getElementById("answerContainer");
 
     /* GESTIÓN DEL BOTÓN CERRAR DINÁMICO */
     document.addEventListener("click", function (ev) {
         const btn = ev.target;
 
-        // Filtra SOLO botones “Cerrar” generados en las respuestas
+        // Detecta botones “Cerrar” generados dentro de una respuesta
         if (
             btn.tagName === "BUTTON" &&
             btn.textContent.trim() === "Cerrar" &&
-            btn.id !== "closeOverlayBtn"     // ignorar el botón estático
+            btn.id !== "closeOverlayBtn"
         ) {
             ev.preventDefault();
 
-            // Eliminamos solamente la respuesta, respetando el placeholder
-            const children = Array.from(answerContainer.children);
-            children.forEach(ch => {
-                if (!ch.classList.contains("placeholder")) {
-                    ch.remove();
-                }
-            });
+            // 1. Ocultar overlay externo
+            if (overlay) {
+                overlay.style.display = "none";
+            }
+
+            // 2. Limpiar texto del overlay (no del recuadro blanco)
+            if (overlayText) {
+                overlayText.textContent = "";
+            }
         }
     });
 });
