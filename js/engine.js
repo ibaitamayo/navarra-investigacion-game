@@ -178,103 +178,63 @@
     // --- RENDER DE AVATAR CON PREGUNTAS DESBLOQUEABLES ---
 
     function renderAvatar(avatarId, options = {}) {
-    const qC = document.getElementById('questionsContainer');
-    const aC = document.getElementById('answerContainer');
-    if (!qC || !aC) return;
+        const qC = document.getElementById('questionsContainer');
+        const aC = document.getElementById('answerContainer'); // se mantiene por compatibilidad
+        if (!qC) return;
 
-    const state = loadState();
-    const unlocked = Array.isArray(state.unlockedQuestions)
-        ? state.unlockedQuestions
-        : [];
-
-    loadQuestions().then(data => {
-        let qs = data[avatarId] || [];
-
-        // 1) Filtrar por preguntas desbloqueadas:
-        //    - si la pregunta NO tiene id → siempre visible
-        //    - si tiene id → solo si está en unlockedQuestions
-        qs = qs.filter(q => {
-            if (!q.id) return true;
-            return unlocked.includes(q.id);
-        });
-
-        // Si no hay ninguna pregunta visible, mostrar mensaje neutro
-        if (!qs.length) {
-            qC.innerHTML = '<p>Todavía no has desbloqueado ninguna pregunta para este avatar.</p>';
-            aC.innerHTML = '<p>Selecciona una pregunta.</p>';
-            return;
+        // Texto inicial por defecto
+        if (aC) {
+            aC.innerHTML = '';
         }
 
-        const ul = document.createElement('ul');
+        const state = loadState();
+        const unlockedQuestions = new Set(state.unlockedQuestions || []);
 
-        qs.forEach(q => {
-            const li = document.createElement('li');
-            const btn = document.createElement('button');
-            btn.textContent = q.text;
-            btn.className = 'avatar-question-button';
+        loadQuestions().then(data => {
+            const allQs = data[avatarId] || [];
 
-            btn.onclick = () => {
-                // SFX si existe
-                if (q.sfx && typeof window.playSFX === 'function') {
-                    window.playSFX(q.sfx);
-                }
+            // Lógica de desbloqueo:
+            // - Si la pregunta no tiene "id", se muestra siempre (compatibilidad con lo ya creado).
+            // - Si tiene "id", solo se muestra si está en unlockedQuestions.
+            const visibleQs = allQs.filter(q => {
+                if (!q.id) return true;
+                return unlockedQuestions.has(q.id);
+            });
 
-                // Respuesta básica en el contenedor
-                let html = '';
-                if (q.answer) {
-                    html += `<p>${q.answer}</p>`;
-                }
+            const ul = document.createElement('ul');
+            ul.className = 'avatar-questions-list';
 
-                // Botón/enlace de continuación si hay leads_to
-                if (q.leads_to) {
-                    html += `<p><a href="${q.leads_to}" class="avatar-next-button">Continuar</a></p>`;
-                }
+            if (visibleQs.length === 0) {
+                const li = document.createElement('li');
+                li.textContent = 'Todavía no has desbloqueado ninguna pregunta para este avatar.';
+                ul.appendChild(li);
+            } else {
+                visibleQs.forEach(q => {
+                    const li = document.createElement('li');
+                    const btn = document.createElement('button');
+                    btn.textContent = q.text;
+                    btn.className = 'avatar-question-button';
 
-                // Si no hay texto ni enlace, mantenemos el mensaje por defecto
-                if (!html) {
-                    html = '<p>Selecciona una pregunta.</p>';
-                }
-
-                aC.innerHTML = html;
-
-                // Desbloqueo de nodo (mapa) si aplica
-                if (q.unlocks_node) {
-                    unlockNode(q.unlocks_node);
-                }
-
-                // Desbloqueo de nuevas preguntas, si se define en questions.json
-                if (Array.isArray(q.unlocks_questions) && q.unlocks_questions.length) {
-                    const st = loadState();
-                    if (!Array.isArray(st.unlockedQuestions)) {
-                        st.unlockedQuestions = [];
-                    }
-
-                    q.unlocks_questions.forEach(id => {
-                        if (id && !st.unlockedQuestions.includes(id)) {
-                            st.unlockedQuestions.push(id);
+                    btn.onclick = () => {
+                        if (typeof window.playSFX === 'function' && q.sfx) {
+                            window.playSFX(q.sfx);
                         }
-                    });
+                        const ac = document.getElementById('answerContainer');
+                        if (ac && (q.sfx === 'type2' || q.sfx === 'type3')) {
+                            ac.innerHTML = '<p class="unlock-msg">¡Has desbloqueado un nuevo camino!</p>';
+                        }
+                        showAvatarAnswer(q, options);
+                    };
 
-                    saveState(st);
-                }
+                    li.appendChild(btn);
+                    ul.appendChild(li);
+                });
+            }
 
-                // Marcar nodo visitado
-                if (options.nodeId) {
-                    markNodeVisited(options.nodeId);
-                }
-            };
-
-            li.appendChild(btn);
-            ul.appendChild(li);
+            qC.innerHTML = '';
+            qC.appendChild(ul);
         });
-
-        qC.innerHTML = '';
-        qC.appendChild(ul);
-
-        // Mensaje por defecto en el área de respuesta
-        aC.innerHTML = '<p>Selecciona una pregunta.</p>';
-    });
-}
+    }
 
     // --- API PÚBLICA DEL MOTOR ---
 
