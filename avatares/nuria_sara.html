@@ -46,6 +46,26 @@ document.addEventListener('DOMContentLoaded', function () {
     if (window.GameEngine && typeof GameEngine.renderAvatar === 'function') {
         GameEngine.renderAvatar('nuria_sara', { nodeId: 'relacion' });
     }
+
+    const answerContainer = document.getElementById('answerContainer');
+
+    // Reasigna el botón "Cerrar" dinámico (el que aparece con la respuesta)
+    document.addEventListener('click', function (ev) {
+        const target = ev.target;
+        if (!target) return;
+
+        // Botones "Cerrar" creados dinámicamente en la respuesta
+        if (
+            target.tagName === 'BUTTON' &&
+            target.textContent.trim() === 'Cerrar' &&
+            target.id !== 'closeOverlayBtn'   // excluye el botón estático "Secuencia investigación"
+        ) {
+            ev.preventDefault();
+            if (answerContainer) {
+                answerContainer.innerHTML = '<p>Selecciona una pregunta.</p>';
+            }
+        }
+    });
 });
 </script>
 
