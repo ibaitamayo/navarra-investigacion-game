@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
             document.dispatchEvent(new Event("waldPuzzleSolved"));
 
             continuar.innerHTML = `
-                <a href="pistas/julian/JL_A17.html"
+                <a href="avatares/julian.html"
                    style="display:inline-block; margin-top:1rem; font-size:1.2rem;">
                    Continuar con la investigación →
                 </a>
