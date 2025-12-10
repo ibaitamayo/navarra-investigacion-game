@@ -46,15 +46,6 @@ document.addEventListener('DOMContentLoaded', function () {
     if (window.GameEngine && typeof GameEngine.renderAvatar === 'function') {
         GameEngine.renderAvatar('nuria_sara', { nodeId: 'relacion' });
     }
-
-    const overlay = document.getElementById('avatarAnswerOverlay');
-    const closeBtn = document.getElementById('closeOverlayBtn');
-
-    if (closeBtn && overlay) {
-        closeBtn.addEventListener('click', function () {
-            overlay.style.display = 'none';
-        });
-    }
 });
 </script>
 
