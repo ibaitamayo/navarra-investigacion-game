@@ -24,8 +24,19 @@
       "text": "¿Cuál era exactamente la duda metodológica que tenía?",
       "answer": "El residente dudaba sobre si su pregunta estaba bien formulada como PICO y sobre qué variables debía considerar como resultado principal.",
       "sfx": "type4",
-      "leads_to": "../puzzle03.html",
-      "unlocks_questions": ["IB_P3"]
+      "leads_to": "../mapa.html",
+      "unlocks_questions": ["JL_P1"]
+    }
+  ],
+
+  "julian": [
+    {
+      "id": "JL_P1",
+      "text": "¿Qué aspectos metodológicos te preocupan del estudio?",
+      "answer": "El diseño debe minimizar sesgos, especialmente el sesgo de selección. También es importante seguir una guía de reporte de EQUATOR adecuada al tipo de estudio.",
+      "sfx": "type3",
+      "unlocks_node": "etica",
+      "leads_to": "../puzzle03.html"
     }
   ]
 }
