@@ -15,14 +15,14 @@
     {
       "id": "IB_P1",
       "text": "P1:¿Qué quería el residente cuando vino a hablar contigo?",
-      "answer": "R1:Quería orientación para formular correctamente la pregunta de investigación y entender si su idea tenía sentido dentro del marco metodológico.",
+      "answer": "R1:Tenía dudas sobre la pregunta de investigación. La planteó como una intervención, pero teníamos dudas. Aquí está la pregunta inicial.",
       "sfx": "type3",
       "leads_to": "../puzzle02.html"
     },
     {
       "id": "IB_P2",
-      "text": "P2:¿Cuál era exactamente la duda metodológica que tenía?",
-      "answer": "R2:El residente dudaba sobre si su pregunta estaba bien formulada como PICO y sobre qué variables debía considerar como resultado principal.",
+      "text": "P2:¿Porqué tenía dudas?",
+      "answer": "R2:Decía algo de que ...no son las alas sino los motores... sugerí que hablase con Juli para solucionarlo.",
       "sfx": "type3",
       "leads_to": "../mapa.html",
       "unlocks_questions": ["JL_P1"],
@@ -33,16 +33,16 @@
   "julian": [
     {
       "id": "JL_P1",
-      "text": "P1:¿Qué aspectos metodológicos te preocupan del estudio?",
-      "answer": "R1:El diseño debe minimizar sesgos, especialmente el sesgo de selección. ",
+      "text": "P1:¿Qué intentaba decir el residente con sududa sobre las alas?",
+      "answer": "R1:Interpreté que se refería a que el diseño debe minimizar sesgos, especialmente el sesgo de selección. ",
       "sfx": "type3",
       "unlocks_node": "etica",
       "leads_to": "../puzzle03.html"
     },
     {
       "id": "JL_P2",
-      "text": "P2:¿Qué herramienta utilizó para decidir cómo reportar su estudio?",
-      "answer": "R2:Le dimos acceso a esta página para que pudiera decidir una guía de puntos importantes del estudio. Mira esta guía y RECUERDA qué guía es la correcta",
+      "text": "P2:¿Qué COnclusión sacó para evitar el sesgo de selección?",
+      "answer": "R2:Deició que la pregunta original- con la intervención -PICO- No tenía sentido. Realizó una pregunta FINER. decidió cómo abordarlo con esta guía",
       "sfx": "type3",
       "leads_to": "../equator.html",
       "unlocks_node": "datos",
@@ -53,8 +53,8 @@
   "javier": [
     {
       "id": "CE_P1",
-      "text": "P1:¿Qué aspectos éticos son esenciales antes de iniciar el estudio?",
-      "answer": "R1:Es fundamental garantizar que el estudio respete los principios éticos del CEIm: consentimiento informado adecuado, proporcionalidad riesgo-beneficio y protección de datos.",
+      "text": "P1:¿Por qué aspectos éticos estaba preocupado el residente antes de iniciar el estudio?",
+      "answer": "R1:El acceso a los datos. Desde aquí le ayudamos para garantizar que el estudio respetaba los principios éticos del CEIm: consentimiento informado adecuado, ojustificacion de su ausencia, proporcionalidad riesgo-beneficio y protección de datos.",
       "sfx": "type3",
       "unlocks_node": "datos",
       "unlocks_questions": ["JD_P1"],
@@ -65,8 +65,8 @@
   "unidad_datos": [
     {
       "id": "JD_P1",
-      "text": "P1:¿Qué requisitos debo cumplir para solicitar datos al SNS-O?",
-      "answer": "R1:Para solicitar datos debes presentar una propuesta metodológica sólida, justificar la necesidad de cada variable y garantizar medidas de seguridad en el tratamiento de datos. Además, debes demostrar que el CEIm ha aprobado el proyecto y cumplir la normativa de protección de datos.",
+      "text": "P1:¿Qué requisitos tuvo que cumplir el residente para solicitar datos al SNS-O?",
+      "answer": "R1:Solo puedo solicitar los datos con propuesta metodológica sólida, justificando la necesidad de cada variable, Garantizando medidas de seguridad en el tratamiento de datos. Además, ES IMPERATIVO demostrar que el CEIm ha aprobado el proyecto.",
       "sfx": "type3",
       "unlocks_node": "analisis",
       "unlocks_questions": ["AN_P1"],
@@ -77,7 +77,7 @@
   "jose": [
     {
       "id": "AN_P1",
-      "text": "P1:¿Qué dudas comentó el residente que le preocupaban?",
+      "text": "P1:¿Qué dudas comentó el residente que le preocupaban del análisis final?",
       "answer": "R1:Habló de que quería entender el teorema de Bayes, por lo que le propuse este ejemplo visual",
       "sfx": "type2",
       "unlocks_node": "difusion",
