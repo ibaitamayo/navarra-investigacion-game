@@ -3,7 +3,7 @@
 
     const NODES = [
         { id: 'relacion', orden: 1, label: '1. Relación IP / Residente', avatar: 'nuria_sara' },
-        { id: 'pico', orden: 2, label: '2. Pregunta PICO y bibliografía', avatar: 'ibai' },
+        { id: 'pico', orden: 2, label: '2. Pregunta y bibliografía', avatar: 'ibai' },
         { id: 'diseno', orden: 3, label: '3. Diseño metodológico', avatar: 'julian' },
         { id: 'etica', orden: 4, label: '4. Comité de Ética (CEIm)', avatar: 'javier' },
         { id: 'datos', orden: 5, label: '5. Solicitud de datos (Unidad del Dato)', avatar: 'unidad_datos' },

@@ -19,13 +19,18 @@ Advertencia: algunos no son válidos para una solicitud al CEIm.
         <h2>Selecciona SOLO los documentos válidos para un envío ético</h2>
 
         <form id="ceim-form">
-    <label><input type="checkbox" value="prot_final"> Protocolo final del estudio</label><br>
-    <label><input type="checkbox" value="hip_ejemplar"> Ejemplar de la Hoja de Información al Paciente (HIP)</label><br>
-    <label><input type="checkbox" value="ci"> Consentimiento Informado (CI)</label><br>
-    <label><input type="checkbox" value="aut_gerente"> Autorización del gerente para acceder a la historia clínica</label><br>
-    <label><input type="checkbox" value="justifica_ausencia"> Documento que justifica la ausencia de HIP y CI</label><br>
-    <label><input type="checkbox" value="compromiso_ip"> Compromiso firmado del IP de aceptación de las condiciones del estudio</label><br>
-    <label><input type="checkbox" value="cv_ip"> Curriculum vitae del IP</label><br>
+    <div class="ceim-row">
+        <label><input type="checkbox" value="prot_final"> Protocolo final del estudio</label><br>
+        <label><input type="checkbox" value="hip_ejemplar"> Ejemplar de la Hoja de Información al Paciente (HIP)</label><br>
+        <label><input type="checkbox" value="ci"> Consentimiento Informado (CI)</label><br>
+        <label><input type="checkbox" value="aut_gerente"> Autorización del gerente para acceder a la historia clínica</label><br>
+    </div>
+
+    <div class="ceim-row">
+        <label><input type="checkbox" value="justifica_ausencia"> Documento que justifica la ausencia de HIP y CI</label><br>
+        <label><input type="checkbox" value="compromiso_ip"> Compromiso firmado del IP de aceptación de las condiciones del estudio</label><br>
+        <label><input type="checkbox" value="cv_ip"> Curriculum vitae del IP</label><br>
+    </div>
 </form>
 
         <button id="checkCEIM" style="margin-top:1rem;">Validar envío</button>
