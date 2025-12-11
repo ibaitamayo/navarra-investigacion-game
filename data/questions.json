@@ -41,8 +41,8 @@
     },
     {
       "id": "JL_P2",
-      "text": "P2:¿Qué COnclusión sacó para evitar el sesgo de selección?",
-      "answer": "R2:Deició que la pregunta original- con la intervención -PICO- No tenía sentido. Realizó una pregunta FINER. decidió cómo abordarlo con esta guía",
+      "text": "P2:¿Qué conclusión sacó para evitar el sesgo de selección?",
+      "answer": "R2:Decidió que la pregunta original- con la intervención -PICO- No tenía sentido. Realizó una pregunta FINER. decidió cómo abordarlo con esta guía",
       "sfx": "type3",
       "leads_to": "../equator.html",
       "unlocks_node": "datos",
@@ -66,7 +66,7 @@
     {
       "id": "JD_P1",
       "text": "P1:¿Qué requisitos tuvo que cumplir el residente para solicitar datos al SNS-O?",
-      "answer": "R1:Solo puedo solicitar los datos con propuesta metodológica sólida, justificando la necesidad de cada variable, Garantizando medidas de seguridad en el tratamiento de datos. Además, ES IMPERATIVO demostrar que el CEIm ha aprobado el proyecto.",
+      "answer": "R1:Solo se pueden solicitar los datos con propuesta metodológica sólida, justificando la necesidad de cada variable, Garantizando medidas de seguridad en el tratamiento de datos. Además, ES IMPERATIVO demostrar que el CEIm ha aprobado el proyecto.",
       "sfx": "type3",
       "unlocks_node": "analisis",
       "unlocks_questions": ["AN_P1"],
