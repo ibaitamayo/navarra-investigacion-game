@@ -42,7 +42,7 @@
     {
       "id": "JL_P2",
       "text": "P2:¿Qué conclusión sacó para evitar el sesgo de selección?",
-      "answer": "R2:Decidió que la pregunta original- con la intervención -PICO- No tenía sentido. Realizó una pregunta FINER. decidió cómo abordarlo con esta guía",
+      "answer": "R2:Decidió que la pregunta original- con la intervención tenía problemas.Así, Decidió realizar un análisis SOBRE TODA LA POBLACIÓN NAVARRA, y decidió cómo enfocarlo con esta guía",
       "sfx": "type3",
       "leads_to": "../equator.html",
       "unlocks_node": "datos",
@@ -54,7 +54,7 @@
     {
       "id": "CE_P1",
       "text": "P1:¿Por qué aspectos éticos estaba preocupado el residente antes de iniciar el estudio?",
-      "answer": "R1:El acceso a los datos. Desde aquí le ayudamos para garantizar que el estudio respetaba los principios éticos del CEIm: consentimiento informado adecuado, ojustificacion de su ausencia, proporcionalidad riesgo-beneficio y protección de datos.",
+      "answer": "R1:El acceso a los datos poblacionales. Desde aquí le ayudamos para garantizar que el estudio respetaba los principios éticos del CEIm: consentimiento informado adecuado, o -justificacion de su ausencia-, proporcionalidad riesgo-beneficio y protección de datos.",
       "sfx": "type3",
       "unlocks_node": "datos",
       "unlocks_questions": ["JD_P1"],
