@@ -21,8 +21,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (seleccion.value === "menos") {
             feedback.innerHTML = `
-                Correcto. Las zonas sin impactos son las realmente vulnerables.  
-                Los aviones que recibieron impactos ahí no regresaron a la base.
+                Correcto! EL problema del que se dió cuenta Wald, era de que los aviones que regresaban representaban solo una parte del total de los aviones. Solo estamos viendo a los aviones que esán lo suficientemente bien para volver a base.  
+                Un impacto en las zonas sin puntos rojos implican que loscon impactos en esas zonas, No regresaron a la base. Esas son las zonas que hay que proteger.
             `;
             if (window.GameEngine && typeof GameEngine.unlockQuestion === "function") {
     GameEngine.unlockQuestion("JL_P2");
